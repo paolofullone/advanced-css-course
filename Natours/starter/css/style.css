@@ -1,0 +1,56 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* paddings and borders are not added to height and width */
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  /* we allways set the font in the body, not in the universal selector */
+  /* Lato was imported from google fonts in html */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+  /* this adds a nice border to entire web page */
+}
+
+.header {
+  height: 95vh;
+  /* size of 95% of viewport height */
+  /* background-image: url(../img/hero.jpg); */
+  /* if we type backimg vscode finds background-image:` */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../img/hero.jpg);
+  /* this sets two background images, one in top of the other, first one is a gradient image */
+  /* 0.8 in the end of rgba sets opacity to 80% */
+  /* to change the hex to rgba click on hex and slide the bar  */
+  background-size: cover;
+  /* this will make the background image try to cover any size of the box */
+  /* at this point the background image is already rendered and we see 5% in the bottom*/
+  /* of the page not filled with the image. */
+  background-position: top;
+  /* when we shrink the window, the top remains the same and the bottom is cropped */
+  /* we can set to bottom in the inspector and see the difference as we reduce the window */
+  /* can also be set to center to crop bottom and top */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* starts at top right, then top left, them bottom left, them bottom right */
+  /* the 75vh maintains 75% of the viewport height */
+  /* to do a triange (50% 0, 100% 100%, 0 100%) */
+  /* https://bennettfeely.com/clippy/ lots of css shapes */
+}
