@@ -53,4 +53,47 @@ body {
   /* the 75vh maintains 75% of the viewport height */
   /* to do a triange (50% 0, 100% 100%, 0 100%) */
   /* https://bennettfeely.com/clippy/ lots of css shapes */
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  /* the reference of top and left is the parend element, in this case the header, so we set position: relative in the parent element */
+}
+
+.logo {
+  height: 35px;
+  /* we can only set heigth and the width will be figured out by the browser */
+}
+
+/* we included a div text-box so we can place the button latter on, included this element here to follow the natural order of the html. */
+.text-box {
+  position: absolute;
+  top: 40%;
+  /* since we cropped the bottom of the image we decided to put 40% instead of 50% */
+  left: 50%;
+  /* background-color: fuchsia; */
+  transform: translate(-50%, -50%);
+  /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+.heading-primary-main {
+  display: block;
+  /* display block occupies all the space available and create break lines before and after the element, if we inspect we will see it occupies 100% */
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 30px;
+}
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 15.6px;
+  /* the letter spacing was adjusted to both texts have the same size */
 }
