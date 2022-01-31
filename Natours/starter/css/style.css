@@ -68,6 +68,12 @@ body {
   /* we can only set heigth and the width will be figured out by the browser */
 }
 
+/* .logo:hover {
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+} */
+
 /* we included a div text-box so we can place the button latter on, included this element here to follow the natural order of the html. */
 .text-box {
   position: absolute;
@@ -104,6 +110,10 @@ body {
   /* the letter spacing was adjusted to both texts have the same size */
   animation: moveInRight 1s ease-out;
 }
+
+/* .heading-primary-sub:hover {
+  animation: moveInRight 1s ease-out;
+} */
 
 @keyframes moveInLeft {
   0% {
@@ -147,3 +157,4 @@ body {
 /* jonas zoomed the video and showed a small shake in the element in the end. no one knows why this happens, to solve we set the   backface-visibility: hidden; in the parend .heading-primary class */
 /* the  backface-visibility: hidden would hide a back part of an element if we rotate it 180 degrees as an example. */
 /* added some transform: rotate(0deg), rotate(180deg), rotate(2700deg) rotate(0deg) in some percentages just to play around */
+/* inserted a .hover:logo to animate the logo on hover, mine was not animating, just flashing fastly.  */
