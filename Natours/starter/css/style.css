@@ -69,7 +69,7 @@ body {
 }
 
 /* .logo:hover {
-  animation-name: moveInLeft;
+  animation-name: moveInRight;
   animation-duration: 1s;
   animation-timing-function: ease-out;
 } */
@@ -83,12 +83,14 @@ body {
   /* background-color: fuchsia; */
   transform: translate(-50%, -50%);
   /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
+  text-align: center;
 }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
   backface-visibility: hidden;
+  margin-bottom: 60px;
 }
 .heading-primary-main {
   display: block;
@@ -158,3 +160,42 @@ body {
 /* the  backface-visibility: hidden would hide a back part of an element if we rotate it 180 degrees as an example. */
 /* added some transform: rotate(0deg), rotate(180deg), rotate(2700deg) rotate(0deg) in some percentages just to play around */
 /* inserted a .hover:logo to animate the logo on hover, mine was not animating, just flashing fastly.  */
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+
+/* we used a :link because this button will be a link, and :link is a pseudo-class */
+/* in the browsers a visited link gets purple, we want them to be same as before visiting. */
+/* paddin: 10px, 40px, 10px top and bottom, 40px left and right */
+/* we set the btn to inline-block so it not overlaps with the header text */
+/* since the btn is a inline-block, it is treated as text. so we set the .text-box property in the begining of the code to text-align: center */
+/* Also added margin-bottom: 60px in the .heading-primary  */
+/* border radius will round the borders of the button */
+/* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* when we click with tansform: translateY(-1px) it moves a bit down. */
+/* box shadow 0 is a shadow in the x direction, here we don't want any shadow in x axis, the 2nd parameter is the shadow, the 3rd is the blur, this will give a impression that when we click we push the button onto the page.  */
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
