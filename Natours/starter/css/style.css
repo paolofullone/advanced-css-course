@@ -60,7 +60,7 @@ body {
   position: absolute;
   top: 40px;
   left: 40px;
-  /* the reference of top and left is the parend element, in this case the header, so we set position: relative in the parent element */
+  /* the reference of top and left is calculated by the parent element, in this case the header, so we set position: relative in the parent element */
 }
 
 .logo {
@@ -161,6 +161,18 @@ body {
 /* added some transform: rotate(0deg), rotate(180deg), rotate(2700deg) rotate(0deg) in some percentages just to play around */
 /* inserted a .hover:logo to animate the logo on hover, mine was not animating, just flashing fastly.  */
 
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
 .btn:link,
 .btn:visited {
   text-transform: uppercase;
@@ -169,6 +181,7 @@ body {
   display: inline-block;
   border-radius: 100px;
   transition: all 0.2s;
+  position: relative;
 }
 
 /* we used a :link because this button will be a link, and :link is a pseudo-class */
@@ -199,3 +212,60 @@ body {
   background-color: #fff;
   color: #777;
 }
+
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+/* with after pseudo-element we always have to specify the content, can be an empty string, but we have to specify. */
+/* we also have to specify display, so we will use exact the same, the button is already an inline-block element */
+/* the after pseudo-element is treated as a child, so we set the 100% of the button width and height to it's "son".  */
+/* so we want to put the btn::after behing the actual element, so we use position: abosolute and set the top:0 and left: 0, the position needs to have a reference, it's the first element it can find, in this case would be the header, but we want it to be the button, so we set the position: relative in the button */
+/* z-index: -1 because we want it behind the button, so we will implement the hover in the btn. */
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+/* after element only when we hover an delement. */
+/* at this point we have a 1.5 times button when we hover it */
+/* so the initial state of the hover::after is the btn::after element, and we will set the transition state on it */
+/* with opacity 0 and transition it will fade out after the time set on transition */
+/* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
+/* we created the @keyframes moveInBottom and inserted the .btn-animated as a class of the discoverourtours button. */
+
+.btn-animated {
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
+}
+
+/* we will set the duration of .5seconds, it will ease-out and will have a delay of .75s related to the others animations */
+/* so the button is visible and then it starts the animation, if we set the animation-fill-mode it will automatically applies the styles of the 0% before the animation starts. which in this case is opacity 0. */
+/* coment the animations-fill-mode to see what happens. */
+
+/* class 11 - section intro */
+/* class 12 - three pillars of writing good html and css => check slides */
+/* class 13 - how css is parsed, part 1: the cascade and specificity */
+/* the cascade is user !importatn declarations, then author !important, then author > user > browser default values */
+/* the specificity is cascaded as inline styles then ids then classes, pseudo-classes and attribute, in the end we have the elements and pseudo elements */
+/*  if theres a tie in the specificity the last code written will override the other ones. */
+/* the !important must be a last last resource, probably you can solve anything with specificity */
+/* inline styles written in html will override any css */
+/* a selector with 1 id is more specific than one with 1000 classes */
+/* a selector with 1 class is more specific than one with 1000 elements */
+/* the universal selector has no specificity selector , it is (0,0,0,0) */
+/* Rely more on specificity than on the order of selectors. */
+/* when you use 3rd party stylesheeds - always put your author stylesheet last, so it can override the 3rd party */
