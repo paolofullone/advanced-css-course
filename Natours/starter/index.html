@@ -17,16 +17,23 @@
   </head>
   <body>
     <header class="header">
-      <div class="logo-box">
-        <img src="./img/logo-white.png" alt="Logo" class="logo" />
+      <div class="header__logo-box">
+        <img src="./img/logo-white.png" alt="Logo" class="header__logo" />
       </div>
-      <div class="text-box">
+      <div class="header__text-box">
         <h1 class="heading-primary">
-          <span class="heading-primary-main">Outdoors</span>
-          <span class="heading-primary-sub">is where life happens</span>
+          <span class="heading-primary--main">Outdoors</span>
+          <span class="heading-primary--sub">is where life happens</span>
         </h1>
-        <a href="#" class="btn btn-white btn-animated">Discover our tours</a>
+        <a href="#" class="btn btn--white btn--animated">Discover our tours</a>
       </div>
     </header>
   </body>
 </html>
+
+<!-- Aplicamos a metodologia BEM no header, a classe logo box virou header__logo-box, a classe text-box virou header__text-box, a classe logo virou header__logo -->
+<!-- Já a classe heading-primary pode estilizar todos os h1 que tivermos na página, não somente o h1 do header, por isso manteve da mesma forma -->
+<!-- Já a classe heading-primary-main é uma variação da header-primary, portanto é um Modifier que usamos --, virou heading-primary--main (e a sub tbm) -->
+<!-- Então revisando, quando é um elemento usa __ e quando é um modifier usa -- -->
+<!-- btn pode usar em várias outras páginas, e white e animated são modifiers -->
+<!-- Agora vamos ajustar as classes no css, após aplicar revisou o site para ver se tudo funcionava -->
