@@ -269,3 +269,18 @@ body {
 /* the universal selector has no specificity selector , it is (0,0,0,0) */
 /* Rely more on specificity than on the order of selectors. */
 /* when you use 3rd party stylesheeds - always put your author stylesheet last, so it can override the 3rd party */
+
+/* 16 - class How Css Values are processed */
+/* in the end, everything (rem, vh...) wil be converted to pixels */
+/* rem is also a relative unit, it is relative to the root font size, the browser default font size is 16px */
+/* in the given example it had a font-size: 150% in a header, it means it will have a font 150% relative to it's parent element, wich is body in this case */
+/* when we express a percentage, the reference is always the parents element, valid for width, padding, fonts... */
+/* //* the parent's width is the reference for % based calculations */
+/* //* if we set the fonts with em and rem the page is more responsive. */
+/* //* vh and vw are simply percentage measurements of the viewport's height and width */
+/* //* each css property has a initial value, which is used if no value is defined, no inheritance here  */
+/* //* browser usually has 16px root-font-size */
+/* //* percentages are measured relative to their parents width if used to specify lengths */
+/* //* em are measured relative to their parent font-size, if used to specify font-size */
+/* //* em are measured relative to current font-size, if used to specify length */
+/* //* rem are always measured relative to the document's root font-size */
