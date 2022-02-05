@@ -340,3 +340,21 @@ body {
 /* //*  uma maneira de empilhar elementos é usar o z-index junto com position. Mostrou um exemplo de 3 elementos empilhados: */
 /* z-index: 3 e position: relative, depois um z-index: 2 e position: absolute depois um z-index: 1 e position: relative*/
 /* //* Opacidade, filter, transform também vão criar empilhamentos, por isso as vezes mesmo com o uso do z-index não causa o efeito esperado de empilhamento */
+
+/* 20 - Arquitetura CSS, componentes e BEM */
+/* //* As decisões no início do projeto vão impactar muito se o site crescer */
+/* //* sugere a metodologia do think build architect */
+/* //* primeiro pensar no layout do site. antes de escrever uma linha de código */
+/* //* em segundo lugar criar o html e o css com uma estrutura consistente de nomes de classes */
+/* //* ao final criar a lógica de arquitetura com arquivos e pastas */
+/* //* Sugeriu o COMPONENT-DRIVEN-DESIGN */
+/* //* THINKING - Blocos modulares para a interface, são integrados pelo layout da página, devem ser reutilizáveis entre vários projetos e seren independentes dos elemetos pai, permitindo que sejam usados em qualquer lugar na página. */
+/* //* BUILD - BEM é Block Element Modifier, mostrou um exemplo de uma página de receitas em que o elemento pai tem uma classe "recipe", cada elemento filho tem sua classe específica como recipe__stats_box, recipe__info e o botão por exemplo tem recipe_btn btn btn--round, ou seja, tem classes adicionais. O que é totalmente permitido,mas a classe recipe__info por exemplo não faz sentido fora de uma classe recipe pai. */
+/* //* No botão por exemplo tem o btn--round que deixa claro que se trata de um botão arredondado, pode ter outras classes de outros tipos de botão por exemplo  */
+/* //* Block é um componente standalone que tem seu significado próprio, Element é parte do bloco que não tem significado próprio e Modifier é uma flag para uma versão diferente do bloco ou elemento */
+/* //* sugeriu uma leitura do código para ver que intuitivamente percebe-se como estão relacionadas as classes e o que cada uma faz. */
+/* //* BEM é mais verboso, mas traz muitos benefícios em aplicações maiores. */
+/* //* Sugeriu o uso da metodologia 7-1, onde temos 7 pastas para arquivos parciais e um arquivo principal onde importamos os outros 7 */
+/* //* base / components / layout / pages / themes / abstracts / vendors */
+/* //* abstract é uma pasta que colocamos código que não tem um css output, como variáveis ou mix-ins??? */
+/* vamos implementar essas pastas nos projetos a medida que foram necessárias, nem sempre usamos todas. */
