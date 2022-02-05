@@ -360,3 +360,19 @@ body {
 /* vamos implementar essas pastas nos projetos a medida que foram necessárias, nem sempre usamos todas. */
 
 /* 21 - aplicando o conceito BEM no projeto */
+
+/* Aula 22 e 23 */
+/* //* SAAS é um pre-processador, uma extensão do css que adiciona poder e elegância a linguagem */
+/* Ao invés de termos apenas um arquivo com muitas linhas de código usamos o saas => compilador saas => css compilado */
+/* vamos usar arquivos saas, depois rodar o compiler e o resultado é um arquivo css compilado, o browser recebe apenas o css compilado */
+/* saas tem variáveis que podem ser reutilizadas como cores, tamanhos de fontes, espaçamento etc  */
+/* também tem  "nesting" que permite aninhar seletores dentro um do outro, permitindo escrever menos código */
+/* operators para operações matemáticas no css */
+/* partials and imports que permite escrever css em vários arquivos e depois importar todos em um arquivo único */
+/* mixins permite reutilizar partes de código "reusable pieces" */
+/* funções quer são similares aos mixis, produzem valores que podem ser reaproveitados */
+/* extends  permite fazer seletores diferentes herdar declarações que são comuns a todos eles */
+/* por fim control directives para escrever códigos mais complexos usando condicionais e loops (não veremos nesse curso) */
+/* o saas tem duas sintaxes, uma com uso de { } e outa sem */
+/* o saas não usa { } e tem identação */
+/* o scss tem os { } e ;, fica mais intuitivo e mais fácil de ler, vamos usar o scss nesse curso */
