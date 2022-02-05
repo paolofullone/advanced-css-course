@@ -7,11 +7,19 @@ Dark green: #28b485
 
 */
 
-* {
+*,
+*::after *::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  /* paddings and borders are not added to height and width */
+  box-sizing: inherit;
+  /* we are forcing the box-sizing to each and every element on the page do inherit what we put in the body, the box-sizing: border-box was here and we moved to body. */
+  /* we updated the * with also the ::after and ::before elements, because only the real elements get the behavior if we use only *, now with the pseudo-elements any rule applied using pseudo elements will also inherit and receive the global reset. */
+}
+
+html {
+  /* font-size: 10px; */
+  /* people ho has bad sight increases the font size of their browsers, if we set to 10pixels we are disabling this feature of the user, so we set in percentage to the equivalent of 10 pixes, 10/16 = 0.625, if the user changes it will affect the entire page */
+  font-size: 62.5%;
 }
 
 body {
@@ -19,11 +27,14 @@ body {
   /* we allways set the font in the body, not in the universal selector */
   /* Lato was imported from google fonts in html */
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 16px; now we will use the html to set the font-size to 10pixel acc. to class 18, so it becomes totally responsive. */
   line-height: 1.7;
   color: #777;
-  padding: 30px;
+  /* padding: 30px; converting to rem*/
+  padding: 3rem;
   /* this adds a nice border to entire web page */
+  box-sizing: border-box;
+  /* paddings and borders are not added to height and width */
 }
 
 .header {
@@ -58,13 +69,16 @@ body {
 
 .logo-box {
   position: absolute;
-  top: 40px;
-  left: 40px;
+  /* top: 40px;
+  left: 40px; converting to rem */
+  top: 4rem;
+  left: 4rem;
   /* the reference of top and left is calculated by the parent element, in this case the header, so we set position: relative in the parent element */
 }
 
 .logo {
-  height: 35px;
+  height: 3.5rem;
+  /* height: 35px; converting to rem */
   /* we can only set heigth and the width will be figured out by the browser */
 }
 
@@ -90,14 +104,17 @@ body {
   color: #fff;
   text-transform: uppercase;
   backface-visibility: hidden;
-  margin-bottom: 60px;
+  /* margin-bottom: 60px; converting to rem */
+  margin-bottom: 6rem;
 }
 .heading-primary-main {
   display: block;
   /* display block occupies all the space available and create break lines before and after the element, if we inspect we will see it occupies 100% */
-  font-size: 60px;
+  font-size: 6rem;
+  /* font-size: 60px; converting to rem */
   font-weight: 400;
-  letter-spacing: 30px;
+  /* letter-spacing: 30px; converting to rem */
+  letter-spacing: 3rem;
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
@@ -106,9 +123,11 @@ body {
 }
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  /* font-size: 20px; converting to rem */
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 15.6px;
+  /* letter-spacing: 15.6px; converting to rem */
+  letter-spacing: 1.56rem;
   /* the letter spacing was adjusted to both texts have the same size */
   animation: moveInRight 1s ease-out;
 }
@@ -120,11 +139,11 @@ body {
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-10rem);
   }
 
   80% {
-    transform: translateX(10px);
+    transform: translateX(1rem);
   }
 
   100% {
@@ -142,11 +161,11 @@ body {
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px);
+    transform: translateX(10rem);
   }
 
   80% {
-    transform: translateX(-10px);
+    transform: translateX(-1rem);
   }
 
   100% {
@@ -164,7 +183,8 @@ body {
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    /* transform: translateY(30px); converting to rem */
+    transform: translateY(3rem);
   }
 
   100% {
@@ -177,9 +197,10 @@ body {
 .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
-  padding: 15px 40px;
+  /* padding: 15px 40px; converting to rem */
+  padding: 1.5rem 4rem;
   display: inline-block;
-  border-radius: 100px;
+  border-radius: 10rem;
   transition: all 0.2s;
   position: relative;
 }
@@ -194,15 +215,15 @@ body {
 /* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 /* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
 
 .btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 /* when we click with tansform: translateY(-1px) it moves a bit down. */
@@ -218,7 +239,7 @@ body {
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  border-radius: 10rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -284,3 +305,38 @@ body {
 /* //* em are measured relative to their parent font-size, if used to specify font-size */
 /* //* em are measured relative to current font-size, if used to specify length */
 /* //* rem are always measured relative to the document's root font-size */
+
+/* 17 - inheritance in css */
+/* every css property must have a value */
+/* when processing a property the 1st question that css engine asks is if there is a cascated value */
+
+/* 18 - convert all units to rem, if we have to do a page to a mobile device, we will be able to change all units changing only in one place. */
+/* to make things easier we set the html font size to 10px, so we know that 1 rem is 10pixels */
+/* rems are not supported in internet explorer 9 */
+/* the technique we used is EXTREMELY DIFICULT with em's, because it depends on the parent's element font-size, not the root font size. */
+
+/* 19 - How CSS Renders a Website - The visual formatting model */
+/* Box Model */
+/* //* Content - Texto ou imagem */
+/* //* Padding - área transparente ao redor do conteúdo, dentro da caixa, uma "margem" dentro da caixa. */
+/* //* Border - fica ao redor do padding e do conteúdo */
+/* //* a margem é o espaço entre caixas, o que vai separar uma caixa da outra */
+/* //* Fill Area é a area que será preenchida com uma imagem ou cor de fundo, inclui o conteúdo, padding, border mas não inclui a margem. */
+/* //* Se usarmos o box-sizing: border-box a caixa terá a largura total definido somente pela propriedade width por exemplo */
+/* //* Se não for definido o box-sizing, a caixa teria a largura definida por: total width = right border + right padding + specified width + left padding + left border */
+/* //* Muito mais fácil definir o tamanho dos elementos usando o box-sizing: border box. */
+/* //* Este conceito se aplica somente a block-level boxes, que é somente 1 tipo de caixas no css, vamos ver as 3 mais comums */
+/* //* display: block as caixas são posicionadas de forma vertical, uma depois da outra, elas ocupam o máximo de largura possível, normalmente 100% da largura do elemento pai e são formatadas visualmente como blocos */
+/* //* parágrafos e divs tem display: block de fábrica. Elas criam quebras de linha antes e depois, por isso são posicionadas de forma vertical */
+/* //* display: inline é basicamente o contrário da block, a caixa ocupa somente o espaço que o conteúdo precisa, é distribuida em linhas, não tem quebras de linhas, heigth e width não se aplicam, ou seja, não podemos definir heigth e width para inline box, paddings e margens só são aplicadas a direita e esquerda. As limitações da inline é que nos levam a inline-block */
+/* //* inline-block é uma mistura dos dois elementos, tecnicamente é uma caixa inline que funciona como block no interior. Usam somente o seu conteúdo como largura e por isso não provocam quebra de lnha.  */
+
+/* //* Esquemas de posicionamento, temos o normal flow, floats e absolute positioning */
+/* //* position: relative é o normal flow, os elementos são dispostos na página de forma natural */
+/* //* float: left ou float: right o elemento é retirado do fluxo normal, texto e inline elements vão ser envolvidos ao redor do "floated element", o container não vai ajustar sua altura ao elemento*/
+/* //*  position: absolute ou position: fixed o elemento é retirado do fluxo normal, o conteúdo não tem impacto em elementos próximos e pode inclusive se sobrepor a eles. */
+/* //* Usamos o top, bottom, left and right para posicionar o elemento em relação ao seu container */
+/* //* stacking content é a pilha de elementos na tela, o mais comum é o z-index */
+/* //*  uma maneira de empilhar elementos é usar o z-index junto com position. Mostrou um exemplo de 3 elementos empilhados: */
+/* z-index: 3 e position: relative, depois um z-index: 2 e position: absolute depois um z-index: 1 e position: relative*/
+/* //* Opacidade, filter, transform também vão criar empilhamentos, por isso as vezes mesmo com o uso do z-index não causa o efeito esperado de empilhamento */
