@@ -376,3 +376,12 @@ body {
 /* o saas tem duas sintaxes, uma com uso de { } e outa sem */
 /* o saas não usa { } e tem identação */
 /* o scss tem os { } e ;, fica mais intuitivo e mais fácil de ler, vamos usar o scss nesse curso */
+
+
+/* freecodecamp basic course */
+/* border-radius: 50% transforma a imagem em uma imagem redonda; */
+
+/* elemento com duas classes, aplica a que for a última no css, não importa a ordem no html */
+/* elemento com duas classes e um id, aplica o id, mesmo que ele venha antes das classes no css, não importa a ordem no html */
+/* se colocar um inline style vai sobrescrever classes e id's */
+/* e o último recurso que é má prática => !important */
