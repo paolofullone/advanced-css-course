@@ -1,85 +1,75 @@
-/*
-COLORS:
-
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
-
-*/
-
+$color-primary: #7ed56f;
+$color-primary-light: #55c57a;
+$color-primary-dark: #28b485;
+$color-grey-dark: #777;
+$color-white: #fff;
 *,
-*::after *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-  /* we are forcing the box-sizing to each and every element on the page do inherit what we put in the body, the box-sizing: border-box was here and we moved to body. */
-  /* we updated the * with also the ::after and ::before elements, because only the real elements get the behavior if we use only *, now with the pseudo-elements any rule applied using pseudo elements will also inherit and receive the global reset. */
+*:after *:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 html {
-  /* font-size: 10px; */
-  /* people ho has bad sight increases the font size of their browsers, if we set to 10pixels we are disabling this feature of the user, so we set in percentage to the equivalent of 10 pixes, 10/16 = 0.625, if the user changes it will affect the entire page */
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  font-family: 'Lato', sans-serif;
-  /* we allways set the font in the body, not in the universal selector */
-  /* Lato was imported from google fonts in html */
-  font-weight: 400;
-  /* font-size: 16px; now we will use the html to set the font-size to 10pixel acc. to class 18, so it becomes totally responsive. */
-  line-height: 1.7;
-  color: #777;
-  /* padding: 30px; converting to rem*/
-  padding: 3rem;
-  /* this adds a nice border to entire web page */
-  box-sizing: border-box;
-  /* paddings and borders are not added to height and width */
+    font-family: 'Lato', sans-serif;
+    /* we allways set the font in the body, not in the universal selector */
+    /* Lato was imported from google fonts in html */
+    font-weight: 400;
+    /* font-size: 16px; now we will use the html to set the font-size to 10pixel acc. to class 18, so it becomes totally responsive. */
+    line-height: 1.7;
+    color: $color-grey-dark;
+    /* padding: 30px; converting to rem*/
+    padding: 3rem;
+    /* this adds a nice border to entire web page */
+    box-sizing: border-box;
+    /* paddings and borders are not added to height and width */
 }
 
 .header {
-  height: 95vh;
-  /* size of 95% of viewport height */
-  /* background-image: url(../img/hero.jpg); */
-  /* if we type backimg vscode finds background-image:` */
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 133, 0.8)
-    ),
-    url(../img/hero.jpg);
-  /* this sets two background images, one in top of the other, first one is a gradient image */
-  /* 0.8 in the end of rgba sets opacity to 80% */
-  /* to change the hex to rgba click on hex and slide the bar  */
-  background-size: cover;
-  /* this will make the background image try to cover any size of the box */
-  /* at this point the background image is already rendered and we see 5% in the bottom*/
-  /* of the page not filled with the image. */
-  background-position: top;
-  /* when we shrink the window, the top remains the same and the bottom is cropped */
-  /* we can set to bottom in the inspector and see the difference as we reduce the window */
-  /* can also be set to center to crop bottom and top */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* starts at top right, then top left, them bottom left, them bottom right */
-  /* the 75vh maintains 75% of the viewport height */
-  /* to do a triange (50% 0, 100% 100%, 0 100%) */
-  /* https://bennettfeely.com/clippy/ lots of css shapes */
-  position: relative;
+    height: 95vh;
+    /* size of 95% of viewport height */
+    /* background-image: url(../img/hero.jpg); */
+    /* if we type backimg vscode finds background-image:` */
+    background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.8)),
+        url(../img/hero.jpg);
+    /* this sets two background images, one in top of the other, first one is a gradient image */
+    /* 0.8 in the end of rgba sets opacity to 80% */
+    /* to change the hex to rgba click on hex and slide the bar  */
+    background-size: cover;
+    /* this will make the background image try to cover any size of the box */
+    /* at this point the background image is already rendered and we see 5% in the bottom*/
+    /* of the page not filled with the image. */
+    background-position: top;
+    /* when we shrink the window, the top remains the same and the bottom is cropped */
+    /* we can set to bottom in the inspector and see the difference as we reduce the window */
+    /* can also be set to center to crop bottom and top */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* starts at top right, then top left, them bottom left, them bottom right */
+    /* the 75vh maintains 75% of the viewport height */
+    /* to do a triange (50% 0, 100% 100%, 0 100%) */
+    /* https://bennettfeely.com/clippy/ lots of css shapes */
+    position: relative;
 }
 
 .header__logo-box {
-  position: absolute;
-  /* top: 40px;
+    position: absolute;
+    /* top: 40px;
   left: 40px; converting to rem */
-  top: 4rem;
-  left: 4rem;
-  /* the reference of top and left is calculated by the parent element, in this case the header, so we set position: relative in the parent element */
+    top: 4rem;
+    left: 4rem;
+    /* the reference of top and left is calculated by the parent element, in this case the header, so we set position: relative in the parent element */
 }
 
 .header__logo {
-  height: 3.5rem;
-  /* height: 35px; converting to rem */
-  /* we can only set heigth and the width will be figured out by the browser */
+    height: 3.5rem;
+    /* height: 35px; converting to rem */
+    /* we can only set heigth and the width will be figured out by the browser */
 }
 
 /* .logo:hover {
@@ -90,46 +80,48 @@ body {
 
 /* we included a div text-box so we can place the button latter on, included this element here to follow the natural order of the html. */
 .header__text-box {
-  position: absolute;
-  top: 40%;
-  /* since we cropped the bottom of the image we decided to put 40% instead of 50% */
-  left: 50%;
-  /* background-color: fuchsia; */
-  transform: translate(-50%, -50%);
-  /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
-  text-align: center;
+    position: absolute;
+    top: 40%;
+    /* since we cropped the bottom of the image we decided to put 40% instead of 50% */
+    left: 50%;
+    /* background-color: fuchsia; */
+    transform: translate(-50%, -50%);
+    /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
+    text-align: center;
 }
 
 .heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  /* margin-bottom: 60px; converting to rem */
-  margin-bottom: 6rem;
+    color: $color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    /* margin-bottom: 60px; converting to rem */
+    margin-bottom: 6rem;
 }
+
 .heading-primary--main {
-  display: block;
-  /* display block occupies all the space available and create break lines before and after the element, if we inspect we will see it occupies 100% */
-  font-size: 6rem;
-  /* font-size: 60px; converting to rem */
-  font-weight: 400;
-  /* letter-spacing: 30px; converting to rem */
-  letter-spacing: 3rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /* animation-delay: 1s;
+    display: block;
+    /* display block occupies all the space available and create break lines before and after the element, if we inspect we will see it occupies 100% */
+    font-size: 6rem;
+    /* font-size: 60px; converting to rem */
+    font-weight: 400;
+    /* letter-spacing: 30px; converting to rem */
+    letter-spacing: 3rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 1s;
   animation-iteration-count: 3; */
 }
+
 .heading-primary--sub {
-  display: block;
-  /* font-size: 20px; converting to rem */
-  font-size: 2rem;
-  font-weight: 700;
-  /* letter-spacing: 15.6px; converting to rem */
-  letter-spacing: 1.56rem;
-  /* the letter spacing was adjusted to both texts have the same size */
-  animation: moveInRight 1s ease-out;
+    display: block;
+    /* font-size: 20px; converting to rem */
+    font-size: 2rem;
+    font-weight: 700;
+    /* letter-spacing: 15.6px; converting to rem */
+    letter-spacing: 1.56rem;
+    /* the letter spacing was adjusted to both texts have the same size */
+    animation: moveInRight 1s ease-out;
 }
 
 /* .heading-primary-sub:hover {
@@ -137,19 +129,19 @@ body {
 } */
 
 @keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-10rem);
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
 
-  80% {
-    transform: translateX(1rem);
-  }
+    80% {
+        transform: translateX(1rem);
+    }
 
-  100% {
-    opacity: 1;
-    transform: translate(0);
-  }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
 
 /* To animate anything we will use @keyframes, we can set any percentage and any amount of percentages, we could have 0, 20, 40, 60, 80, 100... */
@@ -159,19 +151,19 @@ body {
 /*  we also have some more additional parameters as ease-in, ease-out, with accelerates more in the beginning or in the end... */
 
 @keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(10rem);
-  }
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
 
-  80% {
-    transform: translateX(-1rem);
-  }
+    80% {
+        transform: translateX(-1rem);
+    }
 
-  100% {
-    opacity: 1;
-    transform: translate(0);
-  }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
 
 /* in the second one we used a shorthand and passed a one liner. */
@@ -181,28 +173,28 @@ body {
 /* inserted a .hover:logo to animate the logo on hover, mine was not animating, just flashing fastly.  */
 
 @keyframes moveInBottom {
-  0% {
-    opacity: 0;
-    /* transform: translateY(30px); converting to rem */
-    transform: translateY(3rem);
-  }
+    0% {
+        opacity: 0;
+        /* transform: translateY(30px); converting to rem */
+        transform: translateY(3rem);
+    }
 
-  100% {
-    opacity: 1;
-    transform: translate(0);
-  }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
 
 .btn:link,
 .btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  /* padding: 15px 40px; converting to rem */
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s;
-  position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    /* padding: 15px 40px; converting to rem */
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s;
+    position: relative;
 }
 
 /* we used a :link because this button will be a link, and :link is a pseudo-class */
@@ -215,36 +207,36 @@ body {
 /* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
 
 .btn:hover {
-  transform: translateY(-3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 /* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
 
 .btn:active {
-  transform: translateY(-1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 /* when we click with tansform: translateY(-1px) it moves a bit down. */
 /* box shadow 0 is a shadow in the x direction, here we don't want any shadow in x axis, the 2nd parameter is the shadow, the 3rd is the blur, this will give a impression that when we click we push the button onto the page.  */
 
 .btn--white {
-  background-color: #fff;
-  color: #777;
+    background-color: $color-white;
+    color: $color-grey-dark;
 }
 
 .btn::after {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s;
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
 }
 
 /* with after pseudo-element we always have to specify the content, can be an empty string, but we have to specify. */
@@ -254,13 +246,14 @@ body {
 /* z-index: -1 because we want it behind the button, so we will implement the hover in the btn. */
 
 .btn--white::after {
-  background-color: #fff;
+    background-color: $color-white;
 }
 
 .btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
 }
+
 /* after element only when we hover an delement. */
 /* at this point we have a 1.5 times button when we hover it */
 /* so the initial state of the hover::after is the btn::after element, and we will set the transition state on it */
@@ -269,8 +262,8 @@ body {
 /* we created the @keyframes moveInBottom and inserted the .btn-animated as a class of the discoverourtours button. */
 
 .btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.75s;
-  animation-fill-mode: backwards;
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
 }
 
 /* we will set the duration of .5seconds, it will ease-out and will have a delay of .75s related to the others animations */
@@ -385,3 +378,20 @@ body {
 /* elemento com duas classes e um id, aplica o id, mesmo que ele venha antes das classes no css, não importa a ordem no html */
 /* se colocar um inline style vai sobrescrever classes e id's */
 /* e o último recurso que é má prática => !important */
+
+/* aula 24 e 25 */
+/* https://codepen.io/paolofullone/pen/yLPVyJZ?editors=1100 */
+
+/* aula 26 - brief intro to command line */
+/* nothing new... */
+
+/* aula 27 - install saas locally */
+/* npm init ou npm init -y para criar o package.json */
+/* npm install node-saas --save-dev => com este comando o node-saas vai ser listado como dependência do package.json como ferramente de desenvolvimento */
+/* o que funcionou foi npm i saas --save-dev */
+/* criou um diretório saas, main.css e colocou todo o conteúdo nesse novo arquivo */
+/* no package.json removemos o test nos scripts e adicionamos::after  "scripts": {
+    "compile:saas": "node-sass sass/main.css css/style.css"
+*/
+// usei a extensão live sass compiler, mais prático.
+// aula 28, 29 => configuração SASS
