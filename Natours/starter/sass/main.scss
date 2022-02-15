@@ -1,290 +1,17 @@
-$color-primary: #7ed56f;
-$color-primary-light: #55c57a;
-$color-primary-dark: #28b485;
-$color-grey-dark: #777;
-$color-white: #fff;
-$color-black: #000;
+@import "abstract/functions";
+@import "abstract/mixins";
+@import "abstract/variables";
 
-*,
-*::after *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-}
+@import "base/base";
+@import "base/animation";
+@import "base/typography";
+@import "base/utilities";
 
-html {
-    font-size: 62.5%;
-}
+@import "components/button";
 
-body {
-    font-family: 'Lato', sans-serif;
-    /* we allways set the font in the body, not in the universal selector */
-    /* Lato was imported from google fonts in html */
-    font-weight: 400;
-    /* font-size: 16px; now we will use the html to set the font-size to 10pixel acc. to class 18, so it becomes totally responsive. */
-    line-height: 1.7;
-    color: $color-grey-dark;
-    /* padding: 30px; converting to rem*/
-    padding: 3rem;
-    /* this adds a nice border to entire web page */
-    box-sizing: border-box;
-    /* paddings and borders are not added to height and width */
-}
+@import "layout/header";
 
-.header {
-    height: 95vh;
-    /* size of 95% of viewport height */
-    /* background-image: url(../img/hero.jpg); */
-    /* if we type backimg vscode finds background-image:` */
-    background-image: linear-gradient(to right bottom,
-            rgba($color-primary-light, 0.8),
-            rgba($color-primary-dark, 0.8)),
-        url(little-silv.png);
-    /* this sets two background images, one in top of the other, first one is a gradient image */
-    /* 0.8 in the end of rgba sets opacity to 80% */
-    /* to change the hex to rgba click on hex and slide the bar  */
-    background-size: cover;
-    /* this will make the background image try to cover any size of the box */
-    /* at this point the background image is already rendered and we see 5% in the bottom*/
-    /* of the page not filled with the image. */
-    background-position: top;
-    /* when we shrink the window, the top remains the same and the bottom is cropped */
-    /* we can set to bottom in the inspector and see the difference as we reduce the window */
-    /* can also be set to center to crop bottom and top */
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    /* starts at top right, then top left, them bottom left, them bottom right */
-    /* the 75vh maintains 75% of the viewport height */
-    /* to do a triange (50% 0, 100% 100%, 0 100%) */
-    /* https://bennettfeely.com/clippy/ lots of css shapes */
-    position: relative;
-    // o operador & copia a propriedade do elemento, neste caso copia o header, podemos aninhar a logo-box dentro da header passando:
-    &__logo-box {
-        position: absolute;
-        /* top: 40px;
-        left: 40px; converting to rem */
-        top: 4rem;
-        left: 4rem;
-        /* the reference of top and left is calculated by the parent element, in this case the header, so we set position: relative in the parent element */
-        }
-
-        &__logo {
-            height: 3.5rem;
-            /* height: 35px; converting to rem */
-            /* we can only set heigth and the width will be figured out by the browser */
-        }
-
-        /* we included a div text-box so we can place the button latter on, included this element here to follow the natural order of the html. */
-        &__text-box {
-            position: absolute;
-            top: 40%;
-            /* since we cropped the bottom of the image we decided to put 40% instead of 50% */
-            left: 50%;
-            /* background-color: fuchsia; */
-            transform: translate(-50%, -50%);
-            /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
-            text-align: center;
-        }
-        /* we included a div text-box so we can place the button latter on, included this element here to follow the natural order of the html. */
-        &__text-box {
-            position: absolute;
-            top: 40%;
-            /* since we cropped the bottom of the image we decided to put 40% instead of 50% */
-            left: 50%;
-            /* background-color: fuchsia; */
-            transform: translate(-50%, -50%);
-            /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
-            text-align: center;
-        }
-}
-
-// .header__logo-box {
-// moved to &__logo-box and so the others header childs.
-// }
-
-.heading-primary {
-    color: $color-white;
-    text-transform: uppercase;
-    backface-visibility: hidden;
-    /* margin-bottom: 60px; converting to rem */
-    margin-bottom: 6rem;
-
-    &--main {
-        display: block;
-        /* display block occupies all the space available and create break lines before and after the element, if we inspect we will see it occupies 100% */
-        font-size: 6rem;
-        /* font-size: 60px; converting to rem */
-        font-weight: 400;
-        /* letter-spacing: 30px; converting to rem */
-        letter-spacing: 3rem;
-        animation-name: moveInLeft;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-        /* animation-delay: 1s;
-    animation-iteration-count: 3; */
-    }
-
-    &--sub {
-        display: block;
-        /* font-size: 20px; converting to rem */
-        font-size: 2rem;
-        font-weight: 700;
-        /* letter-spacing: 15.6px; converting to rem */
-        letter-spacing: 1.56rem;
-        /* the letter spacing was adjusted to both texts have the same size */
-        animation: moveInRight 1s ease-out;
-    }
-
-    /* .heading-primary-sub:hover {
-    animation: moveInRight 1s ease-out;
-    } */
-}
-
-@keyframes moveInLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
-
-    80% {
-        transform: translateX(1rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-/* To animate anything we will use @keyframes, we can set any percentage and any amount of percentages, we could have 0, 20, 40, 60, 80, 100... */
-/* first thing we set invisible with opacity 0 at 0% and visible with opacity 1 at 100% */
-/*  translateX(-100px) will move 100px to the left and finish at the exact same position it is settet in the class parameters itself with translate(0)*/
-/* we just inserted a 10px at 80% so it goes forth than back, we can also set an delay if we want to. animation iteration count repeats the animation. */
-/*  we also have some more additional parameters as ease-in, ease-out, with accelerates more in the beginning or in the end... */
-
-@keyframes moveInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-    }
-
-    80% {
-        transform: translateX(-1rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-/* in the second one we used a shorthand and passed a one liner. */
-/* jonas zoomed the video and showed a small shake in the element in the end. no one knows why this happens, to solve we set the   backface-visibility: hidden; in the parend .heading-primary class */
-/* the  backface-visibility: hidden would hide a back part of an element if we rotate it 180 degrees as an example. */
-/* added some transform: rotate(0deg), rotate(180deg), rotate(2700deg) rotate(0deg) in some percentages just to play around */
-/* inserted a .hover:logo to animate the logo on hover, mine was not animating, just flashing fastly.  */
-
-@keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        /* transform: translateY(30px); converting to rem */
-        transform: translateY(3rem);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
-}
-
-.btn {
-    &:link,
-    &:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    /* padding: 15px 40px; converting to rem */
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    border-radius: 10rem;
-    transition: all 0.2s;
-    position: relative;
-    font-size: 1.6rem;
-    }
-    /* we used a :link because this button will be a link, and :link is a pseudo-class */
-    /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
-    /* paddin: 10px, 40px, 10px top and bottom, 40px left and right */
-    /* we set the btn to inline-block so it not overlaps with the header text */
-    /* since the btn is a inline-block, it is treated as text. so we set the .text-box property in the begining of the code to text-align: center */
-    /* Also added margin-bottom: 60px in the .heading-primary  */
-    /* border radius will round the borders of the button */
-    /* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
-
-    &:hover {
-        transform: translateY(-3rem);
-        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
-
-        /* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
-        
-        &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
-        }
-    }
-
-    /* after element only when we hover an delement. */
-    /* at this point we have a 1.5 times button when we hover it */
-    /* so the initial state of the hover::after is the btn::after element, and we will set the transition state on it */
-    /* with opacity 0 and transition it will fade out after the time set on transition */
-    /* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
-    /* we created the @keyframes moveInBottom and inserted the &-animated as a class of the discoverourtours button. */
-
-
-
-    &:active {
-        transform: translateY(-1rem);
-        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
-    }
-
-    /* when we click with tansform: translateY(-1px) it moves a bit down. */
-    /* box shadow 0 is a shadow in the x direction, here we don't want any shadow in x axis, the 2nd parameter is the shadow, the 3rd is the blur, this will give a impression that when we click we push the button onto the page.  */
-
-    &--white {
-        background-color: $color-white;
-        color: $color-grey-dark;
-
-        &::after {
-            background-color: $color-white;
-        }
-    }
-
-    &::after {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        border-radius: 10rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all 0.4s;
-    }
-
-    /* with after pseudo-element we always have to specify the content, can be an empty string, but we have to specify. */
-    /* we also have to specify display, so we will use exact the same, the button is already an inline-block element */
-    /* the after pseudo-element is treated as a child, so we set the 100% of the button width and height to it's "son".  */
-    /* so we want to put the btn::after behing the actual element, so we use position: abosolute and set the top:0 and left: 0, the position needs to have a reference, it's the first element it can find, in this case would be the header, but we want it to be the button, so we set the position: relative in the button */
-    /* z-index: -1 because we want it behind the button, so we will implement the hover in the btn. */
-
-    &--animated {
-        animation: moveInBottom 0.5s ease-out 0.75s;
-        animation-fill-mode: backwards;
-    }
-
-    /* we will set the duration of .5seconds, it will ease-out and will have a delay of .75s related to the others animations */
-    /* so the button is visible and then it starts the animation, if we set the animation-fill-mode it will automatically applies the styles of the 0% before the animation starts. which in this case is opacity 0. */
-    /* coment the animations-fill-mode to see what happens. */
-
-}
+@import "pages/home";
 
 
 /* class 11 - section intro */
@@ -416,3 +143,16 @@ body {
 // aula 31 - convertendo a cor preta para $color-black
 // aninhando todos os elementos usando o &, header, heading, button
 
+// aula 32 - 7-1 pattern 7 pastas e um arquivo principal de css
+// criamos o arquivo _base.scss na pasta base criada.
+// adicionamos os arquivos _animation, _typography e _utilities na pasta base
+// reforçou que essa estrutura 7-1 é mais usada em projetos grandes.
+// criamos a pasta abstracts com os arquivos funcions, mixings e variables.
+// criamos apasta components que são blocos de código independentes e reutilizáveis
+// layout junta os componentes 
+// criamos apasta pages com o arquivo _home.scss
+// a estrutura 7-1 também tem uma pasta themes caso esteja usando mais de um tema na página
+// e a última é a vendors que colocamos 3rd party (bootstrap por exemplo)
+// importamos todos na main.
+// organizou todo o código nos arquivos e pastas correspondentes
+// reforçou que para um projeto pequeno não é necessário, mas com projetos grandes é fundamental.

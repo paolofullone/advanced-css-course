@@ -1,0 +1,13 @@
+*,
+*::after *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+// browsers have 16 pixels as basis, so 10/16 = 62.5%
+// this makes the site responsive.

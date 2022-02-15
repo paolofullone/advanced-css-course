@@ -1,0 +1,56 @@
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* To animate anything we will use @keyframes, we can set any percentage and any amount of percentages, we could have 0, 20, 40, 60, 80, 100... */
+/* first thing we set invisible with opacity 0 at 0% and visible with opacity 1 at 100% */
+/*  translateX(-100px) will move 100px to the left and finish at the exact same position it is settet in the class parameters itself with translate(0)*/
+/* we just inserted a 10px at 80% so it goes forth than back, we can also set an delay if we want to. animation iteration count repeats the animation. */
+/*  we also have some more additional parameters as ease-in, ease-out, with accelerates more in the beginning or in the end... */
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+/* in the second one we used a shorthand and passed a one liner. */
+/* jonas zoomed the video and showed a small shake in the element in the end. no one knows why this happens, to solve we set the   backface-visibility: hidden; in the parend .heading-primary class */
+/* the  backface-visibility: hidden would hide a back part of an element if we rotate it 180 degrees as an example. */
+/* added some transform: rotate(0deg), rotate(180deg), rotate(2700deg) rotate(0deg) in some percentages just to play around */
+/* inserted a .hover:logo to animate the logo on hover, mine was not animating, just flashing fastly.  */
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        /* transform: translateY(30px); converting to rem */
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}

@@ -1,0 +1,51 @@
+body {
+    font-family: 'Lato', sans-serif;
+    /* we allways set the font in the body, not in the universal selector */
+    /* Lato was imported from google fonts in html */
+    font-weight: 400;
+    line-height: 1.7;
+    color: $color-grey-dark;
+    /* padding: 30px; converting to rem*/
+    padding: 3rem;
+    /* this adds a nice border to entire web page */
+    box-sizing: border-box;
+    /* paddings and borders are not added to height and width */
+}
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    /* margin-bottom: 60px; converting to rem */
+    margin-bottom: 6rem;
+
+    &--main {
+        display: block;
+        /* display block occupies all the space available and create break lines before and after the element, if we inspect we will see it occupies 100% */
+        font-size: 6rem;
+        /* font-size: 60px; converting to rem */
+        font-weight: 400;
+        /* letter-spacing: 30px; converting to rem */
+        letter-spacing: 3rem;
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        /* animation-delay: 1s;
+    animation-iteration-count: 3; */
+    }
+
+    &--sub {
+        display: block;
+        /* font-size: 20px; converting to rem */
+        font-size: 2rem;
+        font-weight: 700;
+        /* letter-spacing: 15.6px; converting to rem */
+        letter-spacing: 1.56rem;
+        /* the letter spacing was adjusted to both texts have the same size */
+        animation: moveInRight 1s ease-out;
+    }
+
+    /* .heading-primary-sub:hover {
+    animation: moveInRight 1s ease-out;
+    } */
+}
