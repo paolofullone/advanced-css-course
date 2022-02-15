@@ -39,7 +39,7 @@ body {
     background-image: linear-gradient(to right bottom,
             rgba($color-primary-light, 0.8),
             rgba($color-primary-dark, 0.8)),
-        url(../img/hero.jpg);
+        url(little-silv.png);
     /* this sets two background images, one in top of the other, first one is a gradient image */
     /* 0.8 in the end of rgba sets opacity to 80% */
     /* to change the hex to rgba click on hex and slide the bar  */
@@ -196,8 +196,9 @@ body {
     }
 }
 
-&:link,
-&:visited {
+.btn {
+    &:link,
+    &:visited {
     text-transform: uppercase;
     text-decoration: none;
     /* padding: 15px 40px; converting to rem */
@@ -206,6 +207,8 @@ body {
     border-radius: 10rem;
     transition: all 0.2s;
     position: relative;
+    font-size: 1.6rem;
+    }
     /* we used a :link because this button will be a link, and :link is a pseudo-class */
     /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
     /* paddin: 10px, 40px, 10px top and bottom, 40px left and right */
@@ -224,6 +227,7 @@ body {
         &::after {
             transform: scaleX(1.4) scaleY(1.6);
             opacity: 0;
+        }
     }
 
     /* after element only when we hover an delement. */
@@ -232,7 +236,7 @@ body {
     /* with opacity 0 and transition it will fade out after the time set on transition */
     /* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
     /* we created the @keyframes moveInBottom and inserted the &-animated as a class of the discoverourtours button. */
-    }
+
 
 
     &:active {
@@ -248,8 +252,8 @@ body {
         color: $color-grey-dark;
 
         &::after {
-        background-color: $color-white;
-    }
+            background-color: $color-white;
+        }
     }
 
     &::after {
@@ -281,6 +285,7 @@ body {
     /* coment the animations-fill-mode to see what happens. */
 
 }
+
 
 /* class 11 - section intro */
 /* class 12 - three pillars of writing good html and css => check slides */
@@ -410,3 +415,4 @@ body {
 
 // aula 31 - convertendo a cor preta para $color-black
 // aninhando todos os elementos usando o &, header, heading, button
+

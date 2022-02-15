@@ -3,7 +3,8 @@
 *::after *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 html {
@@ -11,7 +12,7 @@ html {
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   /* we allways set the font in the body, not in the universal selector */
   /* Lato was imported from google fonts in html */
   font-weight: 400;
@@ -21,7 +22,8 @@ body {
   /* padding: 30px; converting to rem*/
   padding: 3rem;
   /* this adds a nice border to entire web page */
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   /* paddings and borders are not added to height and width */
 }
 
@@ -30,7 +32,8 @@ body {
   /* size of 95% of viewport height */
   /* background-image: url(../img/hero.jpg); */
   /* if we type backimg vscode finds background-image:` */
-  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(85, 197, 122, 0.8)), to(rgba(40, 180, 133, 0.8))), url(little-silv.png);
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(little-silv.png);
   /* this sets two background images, one in top of the other, first one is a gradient image */
   /* 0.8 in the end of rgba sets opacity to 80% */
   /* to change the hex to rgba click on hex and slide the bar  */
@@ -52,36 +55,42 @@ body {
   /* we included a div text-box so we can place the button latter on, included this element here to follow the natural order of the html. */
   /* we included a div text-box so we can place the button latter on, included this element here to follow the natural order of the html. */
 }
+
 .header__logo-box {
   position: absolute;
   /* top: 40px;
-  left: 40px; converting to rem */
+        left: 40px; converting to rem */
   top: 4rem;
   left: 4rem;
   /* the reference of top and left is calculated by the parent element, in this case the header, so we set position: relative in the parent element */
 }
+
 .header__logo {
   height: 3.5rem;
   /* height: 35px; converting to rem */
   /* we can only set heigth and the width will be figured out by the browser */
 }
+
 .header__text-box {
   position: absolute;
   top: 40%;
   /* since we cropped the bottom of the image we decided to put 40% instead of 50% */
   left: 50%;
   /* background-color: fuchsia; */
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
   text-align: center;
 }
+
 .header__text-box {
   position: absolute;
   top: 40%;
   /* since we cropped the bottom of the image we decided to put 40% instead of 50% */
   left: 50%;
   /* background-color: fuchsia; */
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   /* with only top and left, it will place the begining of the box 50% to the left and 50% from the top, but not centered, to center we use transform: translate, take translate out and put background color back to check. */
   text-align: center;
 }
@@ -94,9 +103,10 @@ body {
   /* margin-bottom: 60px; converting to rem */
   margin-bottom: 6rem;
   /* .heading-primary-sub:hover {
-  animation: moveInRight 1s ease-out;
-  } */
+    animation: moveInRight 1s ease-out;
+    } */
 }
+
 .heading-primary--main {
   display: block;
   /* display block occupies all the space available and create break lines before and after the element, if we inspect we will see it occupies 100% */
@@ -112,8 +122,9 @@ body {
   -webkit-animation-timing-function: ease-out;
           animation-timing-function: ease-out;
   /* animation-delay: 1s;
-  animation-iteration-count: 3; */
+    animation-iteration-count: 3; */
 }
+
 .heading-primary--sub {
   display: block;
   /* font-size: 20px; converting to rem */
@@ -129,30 +140,37 @@ body {
 @-webkit-keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem);
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
   }
   80% {
-    transform: translateX(1rem);
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
   }
   100% {
     opacity: 1;
-    transform: translate(0);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem);
+    -webkit-transform: translateX(-10rem);
+            transform: translateX(-10rem);
   }
   80% {
-    transform: translateX(1rem);
+    -webkit-transform: translateX(1rem);
+            transform: translateX(1rem);
   }
   100% {
     opacity: 1;
-    transform: translate(0);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
+
 /* To animate anything we will use @keyframes, we can set any percentage and any amount of percentages, we could have 0, 20, 40, 60, 80, 100... */
 /* first thing we set invisible with opacity 0 at 0% and visible with opacity 1 at 100% */
 /*  translateX(-100px) will move 100px to the left and finish at the exact same position it is settet in the class parameters itself with translate(0)*/
@@ -161,29 +179,36 @@ body {
 @-webkit-keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem);
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
   }
   80% {
-    transform: translateX(-1rem);
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
   }
   100% {
     opacity: 1;
-    transform: translate(0);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(10rem);
+    -webkit-transform: translateX(10rem);
+            transform: translateX(10rem);
   }
   80% {
-    transform: translateX(-1rem);
+    -webkit-transform: translateX(-1rem);
+            transform: translateX(-1rem);
   }
   100% {
     opacity: 1;
-    transform: translate(0);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
+
 /* in the second one we used a shorthand and passed a one liner. */
 /* jonas zoomed the video and showed a small shake in the element in the end. no one knows why this happens, to solve we set the   backface-visibility: hidden; in the parend .heading-primary class */
 /* the  backface-visibility: hidden would hide a back part of an element if we rotate it 180 degrees as an example. */
@@ -193,64 +218,101 @@ body {
   0% {
     opacity: 0;
     /* transform: translateY(30px); converting to rem */
-    transform: translateY(3rem);
+    -webkit-transform: translateY(3rem);
+            transform: translateY(3rem);
   }
   100% {
     opacity: 1;
-    transform: translate(0);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
 @keyframes moveInBottom {
   0% {
     opacity: 0;
     /* transform: translateY(30px); converting to rem */
-    transform: translateY(3rem);
+    -webkit-transform: translateY(3rem);
+            transform: translateY(3rem);
   }
   100% {
     opacity: 1;
-    transform: translate(0);
+    -webkit-transform: translate(0);
+            transform: translate(0);
   }
 }
-.btn:link,
-.btn:visited {
+
+.btn {
+  /* we used a :link because this button will be a link, and :link is a pseudo-class */
+  /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
+  /* paddin: 10px, 40px, 10px top and bottom, 40px left and right */
+  /* we set the btn to inline-block so it not overlaps with the header text */
+  /* since the btn is a inline-block, it is treated as text. so we set the .text-box property in the begining of the code to text-align: center */
+  /* Also added margin-bottom: 60px in the .heading-primary  */
+  /* border radius will round the borders of the button */
+  /* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
+  /* after element only when we hover an delement. */
+  /* at this point we have a 1.5 times button when we hover it */
+  /* so the initial state of the hover::after is the btn::after element, and we will set the transition state on it */
+  /* with opacity 0 and transition it will fade out after the time set on transition */
+  /* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
+  /* we created the @keyframes moveInBottom and inserted the &-animated as a class of the discoverourtours button. */
+  /* when we click with tansform: translateY(-1px) it moves a bit down. */
+  /* box shadow 0 is a shadow in the x direction, here we don't want any shadow in x axis, the 2nd parameter is the shadow, the 3rd is the blur, this will give a impression that when we click we push the button onto the page.  */
+  /* with after pseudo-element we always have to specify the content, can be an empty string, but we have to specify. */
+  /* we also have to specify display, so we will use exact the same, the button is already an inline-block element */
+  /* the after pseudo-element is treated as a child, so we set the 100% of the button width and height to it's "son".  */
+  /* so we want to put the btn::after behing the actual element, so we use position: abosolute and set the top:0 and left: 0, the position needs to have a reference, it's the first element it can find, in this case would be the header, but we want it to be the button, so we set the position: relative in the button */
+  /* z-index: -1 because we want it behind the button, so we will implement the hover in the btn. */
+  /* we will set the duration of .5seconds, it will ease-out and will have a delay of .75s related to the others animations */
+  /* so the button is visible and then it starts the animation, if we set the animation-fill-mode it will automatically applies the styles of the 0% before the animation starts. which in this case is opacity 0. */
+  /* coment the animations-fill-mode to see what happens. */
+}
+
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   /* padding: 15px 40px; converting to rem */
   padding: 1.5rem 4rem;
   display: inline-block;
   border-radius: 10rem;
+  -webkit-transition: all 0.2s;
   transition: all 0.2s;
   position: relative;
+  font-size: 1.6rem;
 }
 
-/* we used a :link because this button will be a link, and :link is a pseudo-class */
-/* in the browsers a visited link gets purple, we want them to be same as before visiting. */
-/* paddin: 10px, 40px, 10px top and bottom, 40px left and right */
-/* we set the btn to inline-block so it not overlaps with the header text */
-/* since the btn is a inline-block, it is treated as text. so we set the .text-box property in the begining of the code to text-align: center */
-/* Also added margin-bottom: 60px in the .heading-primary  */
-/* border radius will round the borders of the button */
-/* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
 .btn:hover {
-  transform: translateY(-3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-3rem);
+          transform: translateY(-3rem);
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
 }
 
-/* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
+.btn:hover::after {
+  -webkit-transform: scaleX(1.4) scaleY(1.6);
+          transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
 .btn:active {
-  transform: translateY(-1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-1rem);
+          transform: translateY(-1rem);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-/* when we click with tansform: translateY(-1px) it moves a bit down. */
-/* box shadow 0 is a shadow in the x direction, here we don't want any shadow in x axis, the 2nd parameter is the shadow, the 3rd is the blur, this will give a impression that when we click we push the button onto the page.  */
 .btn--white {
   background-color: #fff;
   color: #777;
 }
 
+.btn--white::after {
+  background-color: #fff;
+}
+
 .btn::after {
-  content: "";
+  content: '';
   display: inline-block;
   height: 100%;
   width: 100%;
@@ -259,29 +321,10 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
+  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
 
-/* with after pseudo-element we always have to specify the content, can be an empty string, but we have to specify. */
-/* we also have to specify display, so we will use exact the same, the button is already an inline-block element */
-/* the after pseudo-element is treated as a child, so we set the 100% of the button width and height to it's "son".  */
-/* so we want to put the btn::after behing the actual element, so we use position: abosolute and set the top:0 and left: 0, the position needs to have a reference, it's the first element it can find, in this case would be the header, but we want it to be the button, so we set the position: relative in the button */
-/* z-index: -1 because we want it behind the button, so we will implement the hover in the btn. */
-.btn--white::after {
-  background-color: #fff;
-}
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0;
-}
-
-/* after element only when we hover an delement. */
-/* at this point we have a 1.5 times button when we hover it */
-/* so the initial state of the hover::after is the btn::after element, and we will set the transition state on it */
-/* with opacity 0 and transition it will fade out after the time set on transition */
-/* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
-/* we created the @keyframes moveInBottom and inserted the .btn-animated as a class of the discoverourtours button. */
 .btn--animated {
   -webkit-animation: moveInBottom 0.5s ease-out 0.75s;
           animation: moveInBottom 0.5s ease-out 0.75s;
@@ -289,9 +332,6 @@ body {
           animation-fill-mode: backwards;
 }
 
-/* we will set the duration of .5seconds, it will ease-out and will have a delay of .75s related to the others animations */
-/* so the button is visible and then it starts the animation, if we set the animation-fill-mode it will automatically applies the styles of the 0% before the animation starts. which in this case is opacity 0. */
-/* coment the animations-fill-mode to see what happens. */
 /* class 11 - section intro */
 /* class 12 - three pillars of writing good html and css => check slides */
 /* class 13 - how css is parsed, part 1: the cascade and specificity */
@@ -400,4 +440,5 @@ body {
 /* criou um diretório saas, main.css e colocou todo o conteúdo nesse novo arquivo */
 /* no package.json removemos o test nos scripts e adicionamos::after  "scripts": {
     "compile:saas": "node-sass sass/main.css css/style.css"
-*//*# sourceMappingURL=main.css.map */
+*/
+/*# sourceMappingURL=main.css.map */
