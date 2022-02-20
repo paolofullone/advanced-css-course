@@ -10,9 +10,9 @@
 @import "components/button";
 
 @import "layout/header";
+@import "layout/grid";
 
 @import "pages/home";
-
 
 /* class 11 - section intro */
 /* class 12 - three pillars of writing good html and css => check slides */
@@ -169,3 +169,7 @@
 // o flexbox é perfeito para layouts de 1-dimensional row, e o css grid para 2-dimensional grid. perfeito para layouts de páginas e componentes complexos. vamos usar o css grid no terceiro projeto.
 // no primeiro projeto vamos usar o float para focar mais em técnicas de clip, transform, animations, background video etc.
 // vamos aprender também por causa de códigos legados.
+
+// aula 33 - como arquitetar e construir um grid
+// o grid permite dividir as seções em partes iguais ou com proporções de tamanhos diferentes.
+// as "columns" alinhadas sempre estão em um "row";

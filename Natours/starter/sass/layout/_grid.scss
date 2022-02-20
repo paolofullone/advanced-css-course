@@ -1,0 +1,70 @@
+.row {
+    max-width: $grid-width;
+    background-color: #eee;
+    margin: 0 auto;
+    
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+        //.row:not()
+        // ficou uma margin-bottom no ultimo elemento, o que não fazia sentido para esse layout, ao invés de selecionar o último e colocar margin-bottom 0, selecionamos todos menos o último com o &:not(:last-child) e aplicamos a margem.
+    }
+
+    @include clearfix;
+
+    // [alt="logo"] { } this selects all the images with alt logo
+    // [class^=col-] { } will select all the elements that starts with col-, and it will not select the ones with only col.
+    // [class*=col-] { } will select all the elements that contains col-.
+    // [class$=col-] { } will select all the elements that ends with col-.
+    // we could use this to select all anchor elements with target set to blank, that opens in a new tab when we click them so we can style them differently
+
+    [class^=col-] {
+        background-color: orange;
+        float: left; 
+        // we always float these columns to the left side.
+
+
+        &:not(:last-child){
+            margin-right: $gutter-horizontal;
+            // o gutter vai ser a margem direita do primeiro elemento quando temos duas colunas na tela, vai ser a margem direita do primeiro e segundo quando temos 3 colunas...
+            // mesma lógica do anterior, pegamos todos menos o último para aplicar o gutter.
+            // obs: para visualizar as colunas lado a lado com o espaçamento no meio tem que ser em tela cheia no meu note...
+            // podemos inspecionar os elementos e ver os tamanhos e espaçamento.
+            // when we inspect we see that the div "row" has heigth 0, all the child elements are floated, so the height collapses and becomes zero. so we use the clearfix hack using a mixin.
+            //* read mixins file
+            // now when inspect in my computer it has 884.5 widht and 17 height
+        }
+    }   
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+        // espaço total menos o "gutter" entre os dois dividido por 2;
+        // para usar variáveis do scss no css precisamos passar o #{ };
+        // a função calc nativa do css permite misturar unidades para os cálculos. no sass não podemos misturar as unidades usando calc, pois estamos compilando o código enquanto estamos desenvolvendo e o browser só vai conseguir interpretar depois que terminar de compilar. Por isso usa a função nativa calc.
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+
+    .col-2-of-3 {
+        width: calc((2 * (100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal})
+    }
+    // 2 columns of 3 are the same of the size of 2 columns + the size of 1 gutter
+
+    .col-1-of-4 {
+        width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
+    }
+
+    .col-2-of-4 {
+        width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
+    }
+
+    .col-3-of-4 {
+        width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
+    }
+}
+
+// um padrão hj em dia é usar 1140 pixels, convertemos para rem para que fique responsivo, por isso usamos o max-width, caso o espaço seja menor que 1140 pixels vai usar o máximo de espaço disponível
+
+// margin: 0 auto centraliza um elemento block dentro de outro elemento block. o browser vai calcular a margem direita e esquerda automaticamente e vai ser igual, por isso o elemento fica centralizado.
+// em página cheia mostra que as colunas são menores que o banner do header.

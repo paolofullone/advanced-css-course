@@ -1,0 +1,12 @@
+@mixin clearfix {
+    &::after{
+        // we used &::after here so the mixin will copy everything in the css code row before it, so after compile it will become .row::after
+        content:"";
+        // we need to specify it's content or the pseudo element will not appear on the page, since we don't want to actually see anything on the page we set it to empty.
+        display: table;
+        // display table is the standard value of the clearfix.
+        clear: both;
+        // clear both will works if we use float left or right
+
+    }
+}
