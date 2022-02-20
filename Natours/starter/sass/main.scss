@@ -156,3 +156,16 @@
 // importamos todos na main.
 // organizou todo o código nos arquivos e pastas correspondentes
 // reforçou que para um projeto pequeno não é necessário, mas com projetos grandes é fundamental.
+
+// aula 33 - revisão dos princípios do design responsivo
+// layout responsivo significa que a página deve se ajustar a qualquer tamanho de tela, não necessariamente um dispositivo, pode ser também o tamanho da janela do browser.
+// Os 4 pilares são: fluid layout, responsive units, flexible images and media queries.
+// fluid layout - usar o % ou vh/vw, max-width ao invés de width;
+// responsive units - rem ao invés de pixels.
+// flexible images - por padrão imagens não se ajustam ao se modificar o viewport, sempre devemos usar % nas dimensões junto com max-width em algumas situações.
+// media-query depende de todas as outras, para implementar os break points das páginas. media-query sózinhas são inúteis.
+
+// os layouts podem ser float, flexbox ou css grid (ver slide), float era a técnica de colocar várias caixas lado a lado, o flexbox e css grid tem substituído o float desde 2020. Neste projeto vamos fazer float, mas a partir do segundo será flexbox.
+// o flexbox é perfeito para layouts de 1-dimensional row, e o css grid para 2-dimensional grid. perfeito para layouts de páginas e componentes complexos. vamos usar o css grid no terceiro projeto.
+// no primeiro projeto vamos usar o float para focar mais em técnicas de clip, transform, animations, background video etc.
+// vamos aprender também por causa de códigos legados.
