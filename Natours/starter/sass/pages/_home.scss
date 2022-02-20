@@ -1,0 +1,10 @@
+.section-about {
+    background-color: $color-grey-light-1;
+    padding: 25rem 0;
+    // 25 rem on top and bottom
+    margin-top: -20vh;
+    // quando fizemos o header, definimos um vh de 95 e no polígono um vh de 75 na lateral direita embaixo, então ele tem um vh de 20 a menos, por isso colocamos uma margem de -20 para ele preencher o triangulo invertido.
+}
+
+// colocamos a section about na home pois em mais nenhum lugar do site vai ter uma section-about igual a da home.
+// após colocar a section com o h2 ficou um espaço esquisito entre 

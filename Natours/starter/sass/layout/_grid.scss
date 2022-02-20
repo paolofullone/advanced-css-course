@@ -1,6 +1,6 @@
 .row {
     max-width: $grid-width;
-    background-color: #eee;
+    // background-color: #eee;
     margin: 0 auto;
     
     &:not(:last-child) {
@@ -18,7 +18,7 @@
     // we could use this to select all anchor elements with target set to blank, that opens in a new tab when we click them so we can style them differently
 
     [class^=col-] {
-        background-color: orange;
+        // background-color: orange;
         float: left; 
         // we always float these columns to the left side.
 
