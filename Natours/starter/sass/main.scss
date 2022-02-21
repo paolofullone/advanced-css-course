@@ -1,18 +1,19 @@
-@import "abstract/functions";
-@import "abstract/mixins";
-@import "abstract/variables";
+@import 'abstract/functions';
+@import 'abstract/mixins';
+@import 'abstract/variables';
 
-@import "base/base";
-@import "base/animation";
-@import "base/typography";
-@import "base/utilities";
+@import 'base/base';
+@import 'base/animation';
+@import 'base/typography';
+@import 'base/utilities';
 
-@import "components/button";
+@import 'components/button';
+@import 'components/composition';
 
-@import "layout/header";
-@import "layout/grid";
+@import 'layout/header';
+@import 'layout/grid';
 
-@import "pages/home";
+@import 'pages/home';
 
 /* class 11 - section intro */
 /* class 12 - three pillars of writing good html and css => check slides */
@@ -114,7 +115,6 @@
 /* o saas não usa { } e tem identação */
 /* o scss tem os { } e ;, fica mais intuitivo e mais fácil de ler, vamos usar o scss nesse curso */
 
-
 /* freecodecamp basic course */
 /* border-radius: 50% transforma a imagem em uma imagem redonda; */
 
@@ -149,7 +149,7 @@
 // reforçou que essa estrutura 7-1 é mais usada em projetos grandes.
 // criamos a pasta abstracts com os arquivos funcions, mixings e variables.
 // criamos apasta components que são blocos de código independentes e reutilizáveis
-// layout junta os componentes 
+// layout junta os componentes
 // criamos apasta pages com o arquivo _home.scss
 // a estrutura 7-1 também tem uma pasta themes caso esteja usando mais de um tema na página
 // e a última é a vendors que colocamos 3rd party (bootstrap por exemplo)

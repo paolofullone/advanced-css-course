@@ -42,20 +42,44 @@
               You're going to fall in love with nature
             </h3>
             <p class="paragraph">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. In dolores aliquam iste molestiae provident ab voluptatibus, quasi voluptatem ullam reiciendis dicta delectus ea error laboriosam, corporis perferendis commodi cupiditate reprehenderit?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. In
+              dolores aliquam iste molestiae provident ab voluptatibus, quasi
+              voluptatem ullam reiciendis dicta delectus ea error laboriosam,
+              corporis perferendis commodi cupiditate reprehenderit?
             </p>
             <h3 class="heading-tertiary u-margin-bottom-small">
               Live Adventures like you never have before
             </h3>
             <p class="paragraph">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis amet facilis veniam, voluptatibus optio aliquam laboriosam? 
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
+              amet facilis veniam, voluptatibus optio aliquam laboriosam?
             </p>
 
             <a href="#" class="btn-text">Learn more &rarr;</a>
             <!-- the &rarr transforms into an arrow -->
             <!-- https://codingheroes.io/resources/ then https://css-tricks.com/snippets/html/glyphs/ -->
-        </div>
-          <div class="col-1-of-2">Image composition</div>
+          </div>
+          <div class="col-1-of-2">
+            <!-- .composition>(img.composition__photo.composition_photo--p1)*3 -->
+            <!-- using BEM, composition is the block, photo is the element and we need a modifier because each photo is in a different position -->
+            <div class="composition">
+              <img
+                src="img/nat-1-large.jpg"
+                alt="Photo 1"
+                class="composition__photo composition__photo--p1"
+              />
+              <img
+                src="img/nat-2-large.jpg"
+                alt="Photo 2"
+                class="composition__photo composition__photo--p2"
+              />
+              <img
+                src="img/nat-3-large.jpg"
+                alt="Photo 3"
+                class="composition__photo composition__photo--p3"
+              />
+            </div>
+          </div>
         </div>
       </section>
     </main>

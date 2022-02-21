@@ -1,0 +1,49 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    // as soon as we set the position to absolute, they will be placed acc. to the reference and the ref. is the first parent as it encounters which has its position sets to something.
+    // since we will use modifiers we will set the parent (composition) to relative. This will make the reference to be on the top left corner of the composition element.
+    z-index: 10;
+    transition: all 0.2s;
+    // transition is what does the animations between images and not changing instantaneously.
+    outline-offset: 2rem;
+
+    &--p1 {
+      left: 0;
+      top: -2rem;
+    }
+    &--p2 {
+      right: 0;
+      top: 2rem;
+    }
+    &--p3 {
+      left: 20%;
+      top: 10rem;
+    }
+
+    &:hover {
+      outline: 1.5rem solid $color-primary;
+      // this creates the border
+      transform: scale(1.05) translateY(-1rem);
+      // this increases the size in 5% and goes up 10pixels
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+      // this adds the box-shadow
+      z-index: 20;
+      // this puts the image on top of the others
+    }
+  }
+  //   we used percentages on the width of the image and in the left and right positioning so we can have a responsive design.
+  // we set the z-index to 10 in the &__photo and 20 in the &:hover so when we hover an image it will be on top of the others.
+
+  &:hover &__photo:not(:hover) {
+    transform: scale(0.95);
+  }
+}
+
+// to set the borders we set the outline in the hover and the outline offset in the &__photo
+// to shrink the other images we hover the composition element, not the photo element, then we select the photo not hovered with &:hover &__photo:not(:hover), just set it to .5 to see the difference.
