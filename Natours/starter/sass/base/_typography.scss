@@ -72,3 +72,17 @@ body {
     // para centralizar criamos uma div com a classe u-center-text no html, é o conceito de utility classes. Vamos utilizar novamente ao longo do projeto.
     // o heading-secondary que é o elemento do h2 abaixo da div u-center-text é inline-block, portanto se o pai que é a div criada com a classe u-center-text tiver o text-align center o elemento inline-block dentro é tratado como texto e por isso é centralizado.
 }
+
+.heading-tertiary {
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph {
+    font-size: $default-font-size;
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+    // again selecting all except last paragraph to set the bottom margin.
+}

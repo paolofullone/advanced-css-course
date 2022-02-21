@@ -9,7 +9,7 @@
     border-radius: 10rem;
     transition: all 0.2s;
     position: relative;
-    font-size: 1.6rem;
+    font-size: $default-font-size;
     }
     /* we used a :link because this button will be a link, and :link is a pseudo-class */
     /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
@@ -86,4 +86,31 @@
     /* so the button is visible and then it starts the animation, if we set the animation-fill-mode it will automatically applies the styles of the 0% before the animation starts. which in this case is opacity 0. */
     /* coment the animations-fill-mode to see what happens. */
 
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: non;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        // it is fine to use pixels here, because they are really small units.
+        transition: all .2s;
+
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+        transform: translateY(0);
+    }
 }
