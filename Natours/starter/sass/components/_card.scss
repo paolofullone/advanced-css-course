@@ -1,0 +1,44 @@
+.card {
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: 50rem;
+
+    &__side {
+        font-size: 2rem;
+        height: 50rem;
+        transition: all .8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        backface-visibility: hidden;
+        border-radius: 3px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+
+        &--front{
+            background-color: $color-white;
+
+        }
+        &--back{
+            transform: rotateY(180deg);
+
+            &-1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+        }
+    }
+
+    &:hover &__side--front {
+        transform: rotateY(-180deg)
+    }
+    &:hover &__side--back {
+        transform: rotateY(0deg)
+    }
+}
+// o perspective precisa receber um valor alto para funcionar, nesse caso 1500pixels, sugeriu usar o-moz-perspective pois na época não funcionava no mozila, o position do pai ficou relative para o dos filhos ficar absolute, teve que colocar um heigth no pai igual aos filhos pois um estava colapsando com o outro. Usou este recurso.
+// No &--side que é uma div que representa tanto a parte da frente quanto de trás (depois divide mais) colocou um transition ease para melhorar, como precisou definir o posição colocou um top-0 e left-0. O width 100% também foi por causa da div que colapsou (estava uma parte maior que a outra frente e trás). 
+// o backface visibility deixa a parte de trás oculta até que vire o card, mudando para visible já aparece assim que carrega, antes do hover.
+// border radius e box shadow para estilizar.
+// usou as pseudo-classes para a frente e trás da carta (colocou as classes nas div's) e a carta de trás começa com 180 de rotação, pois está escondida, depois usou um gradiente na carta de trás para estilizar e fez o hover da parte da frente e de trás.
+
