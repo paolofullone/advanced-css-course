@@ -8,3 +8,26 @@
 
 // colocamos a section about na home pois em mais nenhum lugar do site vai ter uma section-about igual a da home.
 // após colocar a section com o h2 ficou um espaço esquisito entre 
+
+.section-features {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+    url(/img/nat-4.jpg);
+    background-size: cover;
+
+    // with the "polygon" below we applied a negative margin so we can close the blank space created by the skew.
+    margin-top: -14rem;
+
+    // we could use the polygon to make the same shape we did in the header to this section, however we dit it differently, first we skewed the entire section -7 degrees, same as the polygon, then we skewed back all the childs of the section in the opposite direction (& > *), in this case all the childs it's only one row.
+    transform: skewY(-7deg);
+
+    & > * {
+        transform: skewY(7deg);
+    }
+
+
+
+
+}

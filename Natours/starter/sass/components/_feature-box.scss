@@ -1,0 +1,29 @@
+.feature-box {
+    background-color: rgba($color-white, .8);
+    font-size: 1.5rem;
+    padding: 2.5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    transition: transform .3s;
+
+    &__icon {
+        font-size: 6rem;
+        margin-bottom: .5rem;        
+    // since the world icon is a font, we change it's size by changing font-size.
+
+    // mudando a cor do globo para o tema da página:
+    display: inline-block;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        // aplicamos o gradiente para a direita da cor primária mais clara para mais escura, estava ocupando toda a largura disponível e por isso mudamos para display inline-block para ocupar somente a largura do elemento.
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    // com este bloco de código eliminamos as cores do fundo e aplicamos o gradiente somente no texto, é muito sutil, mudei a primary-dark para vermelho e vi a diferença.
+    }
+
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03)
+    }
+
+}
