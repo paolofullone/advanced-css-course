@@ -27,9 +27,9 @@
     }
 
     &:hover {
-      outline: 1.5rem solid $color-primary;
+      outline: 3px dashed $color-primary;
       // this creates the border
-      transform: scale(1.05) translateY(-1rem);
+      transform: scale(1.03) translateY(-1rem);
       // this increases the size in 5% and goes up 10pixels
       box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
       // this adds the box-shadow

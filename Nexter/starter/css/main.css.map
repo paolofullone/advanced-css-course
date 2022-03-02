@@ -1,0 +1,19 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../sass/main.scss",
+        "../sass/_base.scss",
+        "../sass/_typography.scss",
+        "../sass/_sidebar.scss",
+        "../sass/_header.scss",
+        "../sass/_realtors.scss",
+        "../sass/_features.scss",
+        "../sass/_story.scss",
+        "../sass/_homes.scss",
+        "../sass/_gallery.scss",
+        "../sass/_footer.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}

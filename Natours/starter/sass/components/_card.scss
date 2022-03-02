@@ -1,41 +1,133 @@
 .card {
+
+    // FUNCTIONALITY
+
     perspective: 150rem;
     -moz-perspective: 150rem;
     position: relative;
-    height: 50rem;
+    height: 52rem;
 
     &__side {
-        font-size: 2rem;
-        height: 50rem;
+        height: 52rem;
         transition: all .8s ease;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         border-radius: 3px;
+        overflow: hidden;
         box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
 
         &--front{
             background-color: $color-white;
-
         }
+
         &--back{
             transform: rotateY(180deg);
 
             &-1 {
-            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
             }
         }
     }
 
     &:hover &__side--front {
-        transform: rotateY(-180deg)
+        transform: rotateY(-180deg);
     }
+
     &:hover &__side--back {
-        transform: rotateY(0deg)
+        transform: rotateY(0);
+    }
+
+    // FRONT SIDE STYLING
+    &__picture {
+        background-size: cover;
+        height: 23rem;
+        // essa propriedadde blend mescla os dois background-image, que neste caso são um gradiente e uma imagem.
+        // no navegador podemos explorar as diferentes possibilidades, color, color-burn, color-dodge...
+        // com o background-blend perdemos a borda arredondada da imagem (para comprovar comentar o overflow: hidden e colocar 30 pixels no border-radius. E a solução foi aplicar o overflow: hidden no parent element.
+        background-blend-mode: screen;
+        // o -webkit-clip-path é para funcionar em todos os browsers...
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        
+        &--1 {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), 
+            url(../../img/nat-5.jpg);
+        }
+        &--2 {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), 
+            url(../../img/nat-6.jpg);
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), 
+            url(../../img/nat-7.jpg);
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        text-align: right;
+        color: $color-white;
+        // para o texto do heading ficar em cima da imagem:
+        position: absolute;
+        // posicionou o texto na imagem onde desejava e colocou o width 75% para forçar a quebra de linha, não funcionou e adicionou o padding no __heading-span abaixo. Antes de acicionar testou o width no browser diminuindo o valor.
+        top: 12rem;
+        right: 2rem;
+        width: 75%;
+    }
+
+    &__heading-span {
+        padding: 1rem 1.5rem;
+        // essa linha adiciona o padding a linha "the sea explorer" nas "duas" linhas, sem a box decoration ele trata a linha como uma só, pois forçamos a quebra.
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        
+        &-1 {
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-secondary-light, .85), 
+            rgba($color-secondary-dark, .85));
+        }
+        &--2 {
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-primary-light, .85), 
+            rgba($color-primary-dark, .85));
+        }
+
+        &--3 {
+            background-image: linear-gradient(to right bottom, 
+            rgba($color-tertiary-light, .85), 
+            rgba($color-tertiary-dark, .85));
+        }
+    }
+
+    &__details {
+        padding: 3rem;
+
+        ul {
+            list-style: none;
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                text-align: center;
+                font-size: 1.5rem;
+                padding: 1rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid $color-grey-light-2;
+                }
+            }
+        }
     }
 }
+
+
 // o perspective precisa receber um valor alto para funcionar, nesse caso 1500pixels, sugeriu usar o-moz-perspective pois na época não funcionava no mozila, o position do pai ficou relative para o dos filhos ficar absolute, teve que colocar um heigth no pai igual aos filhos pois um estava colapsando com o outro. Usou este recurso.
 // No &--side que é uma div que representa tanto a parte da frente quanto de trás (depois divide mais) colocou um transition ease para melhorar, como precisou definir o posição colocou um top-0 e left-0. O width 100% também foi por causa da div que colapsou (estava uma parte maior que a outra frente e trás). 
 // o backface visibility deixa a parte de trás oculta até que vire o card, mudando para visible já aparece assim que carrega, antes do hover.

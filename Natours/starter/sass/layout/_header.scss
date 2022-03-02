@@ -19,6 +19,8 @@
     /* when we shrink the window, the top remains the same and the bottom is cropped */
     /* we can set to bottom in the inspector and see the difference as we reduce the window */
     /* can also be set to center to crop bottom and top */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+    // o -webkit-clip-path é para funcionar em todos os browsers...
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     /* starts at top right, then top left, them bottom left, them bottom right */
     /* the 75vh maintains 75% of the viewport height */

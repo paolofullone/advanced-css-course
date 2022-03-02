@@ -1,5 +1,6 @@
 *,
-*::after *::before {
+*::after,
+*::before {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
@@ -11,3 +12,8 @@ html {
 
 // browsers have 16 pixels as basis, so 10/16 = 62.5%
 // this makes the site responsive.
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+}
