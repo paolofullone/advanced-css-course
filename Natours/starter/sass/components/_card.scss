@@ -30,6 +30,14 @@
             &-1 {
                 background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
             }
+
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
         }
     }
 
@@ -52,6 +60,9 @@
         // o -webkit-clip-path é para funcionar em todos os browsers...
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        // quando gravou o curso o clip-path anulava o overflow hidden e precisou colocar essas duas linhas abaixo. 
+        // border-top-left-radius: 3px;
+        // border-top-right-radius: 3px;
         
         &--1 {
             background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), 
@@ -88,7 +99,7 @@
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
         
-        &-1 {
+        &--1 {
             background-image: linear-gradient(to right bottom, 
             rgba($color-secondary-light, .85), 
             rgba($color-secondary-dark, .85));
@@ -124,6 +135,41 @@
                 }
             }
         }
+    }
+
+    // BACK SIDE STYLING
+    // cta is call to action
+
+    &__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        // o botão estava ocupando o tamanho total e ficou esquisito, para solucionar colocou um width 90% na cta (o botão é filho da cta)
+        width: 90%;
+        text-align: center;
+
+    }
+
+    &__price-box {
+        // setando a cor aqui os demais elementos vão herdar
+        // para inspecionar a parte de trás do card, desabilita o transform: rotate
+        color: $color-white;
+        text-align: center;
+        margin-bottom: 8rem;
+
+    }
+
+    &__price-only {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+
+    }
+
+    &__price-value {
+        // big texts matches with thin font weight
+        font-size: 6rem;
+        font-weight: 100;
     }
 }
 
