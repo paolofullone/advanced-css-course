@@ -1,76 +1,78 @@
 .story {
-    width: 75%;
-    // to center a block element inside a block element maring 0 auto resolves.
-    margin: 0 auto;
-    box-shadow: 0 3rem 6rem rgba($color-black, .1);
-    background-color: $color-white;
-    border-radius: 3px;
-    padding: 6rem;
-    // since we used transform: translateX(-3rem) to create a margin below, here we set the padding-left: 9rem so we have the same margins left and right.
-    padding-left: 9rem;
-    font-size: $default-font-size;
+  width: 75%;
+  // to center a block element inside a block element maring 0 auto resolves.
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  // com a inserção do vídeo, o background color da seção com a foto e o texto estão "tampando" o vídeo, se colocarmos um opacity no elemento todo, a foto e o texto também ficaram transparentes, portanto optamos por colocar no background color.
+  background-color: rgba($color-white, 0.4);
+  border-radius: 3px;
+  padding: 6rem;
+  // since we used transform: translateX(-3rem) to create a margin below, here we set the padding-left: 9rem so we have the same margins left and right.
+  padding-left: 9rem;
+  font-size: $default-font-size;
 
-    // skewing the story.
-    transform: skewX(-12deg);
+  // skewing the story.
+  transform: skewX(-12deg);
 
-    // In this case selecting all the childs to apply the inverse skew will not work, since the __shape already has a transform, we can't apply two or more transforms separatedely, instead we should use it in the existing transform and get a new class selector for the text.
-    // & > * {
-    //     transform: skewX(12deg);
-    // }
+  // In this case selecting all the childs to apply the inverse skew will not work, since the __shape already has a transform, we can't apply two or more transforms separatedely, instead we should use it in the existing transform and get a new class selector for the text.
+  // & > * {
+  //     transform: skewX(12deg);
+  // }
 
-    &__shape {
-        // created a orange square to start with (width: 15rem; height: 15rem; float: left; background-color: orange;)
-        width: 15rem;
-        height: 15rem;
-        float: left;
-        // background-color: orange;
-        // to place the text according to the shape of the image we will use shape-outside with circle, first parameter is the diameter, we set 50%, so it will be 7.5 rem
-        // second parameter 50% 50% defines the center of the circle.
-        -webkit-shape-outside: circle(50% at 50% 50%); // was necessary for some browsers, probably changed...
-        // shape outside only works if the element has width, height and it is floated.
-        shape-outside: circle(50% at 50% 50%);
-        // shape makes the text with the same shape of the element, clip path turns the element into a circle.
-        clip-path: circle(50% at 50% 50%);
-        // to create a margin in a floated element, it's better to use transform: translate than margin. 
-        transform: translateX(-3rem) skewX(12deg);
-        position: relative;
-    }
+  &__shape {
+    // created a orange square to start with (width: 15rem; height: 15rem; float: left; background-color: orange;)
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    // background-color: orange;
+    // to place the text according to the shape of the image we will use shape-outside with circle, first parameter is the diameter, we set 50%, so it will be 7.5 rem
+    // second parameter 50% 50% defines the center of the circle.
+    -webkit-shape-outside: circle(
+      50% at 50% 50%
+    ); // was necessary for some browsers, probably changed...
+    // shape outside only works if the element has width, height and it is floated.
+    shape-outside: circle(50% at 50% 50%);
+    // shape makes the text with the same shape of the element, clip path turns the element into a circle.
+    clip-path: circle(50% at 50% 50%);
+    // to create a margin in a floated element, it's better to use transform: translate than margin.
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+  }
 
-    // so when we added the image in the html inside the figure tag, the image was weird, because it was occupying it's full size, inspecting the image we saw a 2000x1333pixels dimensions, so we gave a 100% height, flexible images for responsive web designs always need a width or height.
-    // in this case, if we set to 100% width, the image will not be able to fill the entire circle, because it is bigger on heigth than it is on width.
-    &__img {
-        height: 100%;
-        transform: translateX(-4rem) scale(1.4);
-        transition: all .5s;
-        backface-visibility: hidden;
-    }
-    &__text {
-        transform: skewX(12deg);
-    }
+  // so when we added the image in the html inside the figure tag, the image was weird, because it was occupying it's full size, inspecting the image we saw a 2000x1333pixels dimensions, so we gave a 100% height, flexible images for responsive web designs always need a width or height.
+  // in this case, if we set to 100% width, the image will not be able to fill the entire circle, because it is bigger on heigth than it is on width.
+  &__img {
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+  &__text {
+    transform: skewX(12deg);
+  }
 
-    &__caption {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 20%);
-        color: $color-white;
-        text-transform: uppercase;
-        font-size: 1.7rem;
-        text-align: center;
-        opacity: 0;
-        transition: all .5s;
-        // o backface visibility elimina um "glitch" que acontece no final da movimentação do texto.
-        backface-visibility: hidden;
-    }
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    // o backface visibility elimina um "glitch" que acontece no final da movimentação do texto.
+    backface-visibility: hidden;
+  }
 
-    &:hover &__caption {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-    }
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 
-    &:hover &__img{
-        transform: translateX(-4rem) scale(1);
-        filter: blur(3px) brightness(.8);
-
-    }
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(0.8);
+  }
 }

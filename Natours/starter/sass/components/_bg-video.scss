@@ -1,0 +1,19 @@
+.bg-video {
+  // sempre que seta uma position absolute, o parent tem que ser position relative, neste caso o parent é a section-stories
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  //   os botões estavam atrás do vídeo, por isso colocamos o z-index para ficar por cima.
+  z-index: -1;
+  opacity: 0.15;
+
+  //   setting the video to same size of the element, before this it was bigger than the element.
+  &__content {
+    height: 100%;
+    width: 100%;
+    // o object-fit cover faz com que o video ocupe 100% do espaço mantendo o aspect ratio, o que não couber será cortado.
+    object-fit: cover;
+  }
+}

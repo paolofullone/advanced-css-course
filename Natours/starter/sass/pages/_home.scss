@@ -1,40 +1,44 @@
 .section-about {
-    background-color: $color-grey-light-1;
-    padding: 25rem 0;
-    // 25 rem on top and bottom
-    margin-top: -20vh;
-    // quando fizemos o header, definimos um vh de 95 e no polígono um vh de 75 na lateral direita embaixo, então ele tem um vh de 20 a menos, por isso colocamos uma margem de -20 para ele preencher o triangulo invertido.
+  background-color: $color-grey-light-1;
+  padding: 25rem 0;
+  // 25 rem on top and bottom
+  margin-top: -20vh;
+  // quando fizemos o header, definimos um vh de 95 e no polígono um vh de 75 na lateral direita embaixo, então ele tem um vh de 20 a menos, por isso colocamos uma margem de -20 para ele preencher o triangulo invertido.
 }
 
 // colocamos a section about na home pois em mais nenhum lugar do site vai ter uma section-about igual a da home.
-// após colocar a section com o h2 ficou um espaço esquisito entre 
+// após colocar a section com o h2 ficou um espaço esquisito entre
 
 .section-features {
-    padding: 20rem 0;
-    background-image: linear-gradient(to right bottom,
-        rgba($color-primary-light, 0.8),
-        rgba($color-primary-dark, 0.8)),
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
     url(/img/nat-4.jpg);
-    background-size: cover;
+  background-size: cover;
 
-    // with the "polygon" below we applied a negative margin so we can close the blank space created by the skew.
-    margin-top: -14rem;
+  // with the "polygon" below we applied a negative margin so we can close the blank space created by the skew.
+  margin-top: -14rem;
 
-    // we could use the polygon to make the same shape we did in the header to this section, however we dit it differently, first we skewed the entire section -7 degrees, same as the polygon, then we skewed back all the childs of the section in the opposite direction (& > *), in this case all the childs it's only one row.
-    transform: skewY(-7deg);
+  // we could use the polygon to make the same shape we did in the header to this section, however we dit it differently, first we skewed the entire section -7 degrees, same as the polygon, then we skewed back all the childs of the section in the opposite direction (& > *), in this case all the childs it's only one row.
+  transform: skewY(-7deg);
 
-    & > * {
-        transform: skewY(7deg);
-    }
+  & > * {
+    transform: skewY(7deg);
+  }
 }
 
 .section-tours {
-    background-color: $color-grey-light-1;
-    padding: 25rem 0 15rem 0;
-    margin-top: -14rem;
+  background-color: $color-grey-light-1;
+  padding: 25rem 0 15rem 0;
+  margin-top: -14rem;
 }
 
 .section-stories {
-    padding: 15rem 0;
-    background-color: $color-grey-light-2;
+  padding: 15rem 0;
+  // quando colocamos o vídeo como background, não preicsa mais do background color para ver o tamanho do container
+  //   background-color: $color-grey-light-2;
+  position: relative;
 }

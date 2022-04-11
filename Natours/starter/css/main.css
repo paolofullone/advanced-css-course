@@ -237,6 +237,23 @@ body {
   margin-top: 10rem;
 }
 
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+.bg-video__content {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .btn {
   /* we used a :link because this button will be a link, and :link is a pseudo-class */
   /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
@@ -604,7 +621,7 @@ body {
   margin: 0 auto;
   -webkit-box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
           box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
@@ -629,8 +646,8 @@ body {
   height: 100%;
   -webkit-transform: translateX(-4rem) scale(1.4);
           transform: translateX(-4rem) scale(1.4);
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -651,8 +668,8 @@ body {
   font-size: 1.7rem;
   text-align: center;
   opacity: 0;
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -814,6 +831,6 @@ body {
 
 .section-stories {
   padding: 15rem 0;
-  background-color: #eee;
+  position: relative;
 }
 /*# sourceMappingURL=main.css.map */
