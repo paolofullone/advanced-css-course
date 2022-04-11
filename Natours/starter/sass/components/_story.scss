@@ -33,14 +33,44 @@
         clip-path: circle(50% at 50% 50%);
         // to create a margin in a floated element, it's better to use transform: translate than margin. 
         transform: translateX(-3rem) skewX(12deg);
+        position: relative;
     }
 
     // so when we added the image in the html inside the figure tag, the image was weird, because it was occupying it's full size, inspecting the image we saw a 2000x1333pixels dimensions, so we gave a 100% height, flexible images for responsive web designs always need a width or height.
     // in this case, if we set to 100% width, the image will not be able to fill the entire circle, because it is bigger on heigth than it is on width.
     &__img {
         height: 100%;
+        transform: translateX(-4rem) scale(1.4);
+        transition: all .5s;
+        backface-visibility: hidden;
     }
     &__text {
         transform: skewX(12deg);
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        // o backface visibility elimina um "glitch" que acontece no final da movimentação do texto.
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(.8);
+
     }
 }

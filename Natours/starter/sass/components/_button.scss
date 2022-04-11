@@ -1,6 +1,6 @@
 .btn {
-    &:link,
-    &:visited {
+  &:link,
+  &:visited {
     text-transform: uppercase;
     text-decoration: none;
     /* padding: 15px 40px; converting to rem */
@@ -10,116 +10,112 @@
     transition: all 0.2s;
     position: relative;
     font-size: $default-font-size;
-    }
-    /* we used a :link because this button will be a link, and :link is a pseudo-class */
-    /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
-    /* paddin: 10px, 40px, 10px top and bottom, 40px left and right */
-    /* we set the btn to inline-block so it not overlaps with the header text */
-    /* since the btn is a inline-block, it is treated as text. so we set the .text-box property in the begining of the code to text-align: center */
-    /* Also added margin-bottom: 60px in the .heading-primary  */
-    /* border radius will round the borders of the button */
-    /* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
+  }
+  /* we used a :link because this button will be a link, and :link is a pseudo-class */
+  /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
+  /* paddin: 10px, 40px, 10px top and bottom, 40px left and right */
+  /* we set the btn to inline-block so it not overlaps with the header text */
+  /* since the btn is a inline-block, it is treated as text. so we set the .text-box property in the begining of the code to text-align: center */
+  /* Also added margin-bottom: 60px in the .heading-primary  */
+  /* border radius will round the borders of the button */
+  /* transition is the 2nd method of animation, @keyframes is more complicated one. all means all the properties are enabled to be animated, 0.2s is the time for the transition, we already used the shorthand., the transition property has to be in the initial state. */
 
-    &:hover {
-        transform: translateY(-3rem);
-        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  &:hover {
+    transform: translateY(-3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-        /* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
-        
-        &::after {
-            transform: scaleX(1.4) scaleY(1.6);
-            opacity: 0;
-        }
-    }
-
-    /* after element only when we hover an delement. */
-    /* at this point we have a 1.5 times button when we hover it */
-    /* so the initial state of the hover::after is the btn::after element, and we will set the transition state on it */
-    /* with opacity 0 and transition it will fade out after the time set on transition */
-    /* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
-    /* we created the @keyframes moveInBottom and inserted the &-animated as a class of the discoverourtours button. */
-
-
-
-    &:active {
-        transform: translateY(-1rem);
-        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
-    }
-
-    /* when we click with tansform: translateY(-1px) it moves a bit down. */
-    /* box shadow 0 is a shadow in the x direction, here we don't want any shadow in x axis, the 2nd parameter is the shadow, the 3rd is the blur, this will give a impression that when we click we push the button onto the page.  */
-
-    &--white {
-        background-color: $color-white;
-        color: $color-grey-dark;
-
-        &::after {
-            background-color: $color-white;
-        }
-    }
-
-    &--green {
-        background-color: $color-primary;
-        color: $color-white;
-
-        &::after {
-            background-color: $color-primary;
-        }
-    }
+    /* with transform: translateY(-3px) will move the btn a little bit up when we hover it. */
 
     &::after {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        border-radius: 10rem;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        transition: all 0.4s;
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
     }
+  }
 
-    /* with after pseudo-element we always have to specify the content, can be an empty string, but we have to specify. */
-    /* we also have to specify display, so we will use exact the same, the button is already an inline-block element */
-    /* the after pseudo-element is treated as a child, so we set the 100% of the button width and height to it's "son".  */
-    /* so we want to put the btn::after behing the actual element, so we use position: abosolute and set the top:0 and left: 0, the position needs to have a reference, it's the first element it can find, in this case would be the header, but we want it to be the button, so we set the position: relative in the button */
-    /* z-index: -1 because we want it behind the button, so we will implement the hover in the btn. */
+  /* after element only when we hover an delement. */
+  /* at this point we have a 1.5 times button when we hover it */
+  /* so the initial state of the hover::after is the btn::after element, and we will set the transition state on it */
+  /* with opacity 0 and transition it will fade out after the time set on transition */
+  /* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
+  /* we created the @keyframes moveInBottom and inserted the &-animated as a class of the discoverourtours button. */
 
-    &--animated {
-        animation: moveInBottom 0.5s ease-out 0.75s;
-        animation-fill-mode: backwards;
+  &:active {
+    transform: translateY(-1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  /* when we click with tansform: translateY(-1px) it moves a bit down. */
+  /* box shadow 0 is a shadow in the x direction, here we don't want any shadow in x axis, the 2nd parameter is the shadow, the 3rd is the blur, this will give a impression that when we click we push the button onto the page.  */
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
     }
+  }
 
-    /* we will set the duration of .5seconds, it will ease-out and will have a delay of .75s related to the others animations */
-    /* so the button is visible and then it starts the animation, if we set the animation-fill-mode it will automatically applies the styles of the 0% before the animation starts. which in this case is opacity 0. */
-    /* coment the animations-fill-mode to see what happens. */
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
 
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  /* with after pseudo-element we always have to specify the content, can be an empty string, but we have to specify. */
+  /* we also have to specify display, so we will use exact the same, the button is already an inline-block element */
+  /* the after pseudo-element is treated as a child, so we set the 100% of the button width and height to it's "son".  */
+  /* so we want to put the btn::after behing the actual element, so we use position: abosolute and set the top:0 and left: 0, the position needs to have a reference, it's the first element it can find, in this case would be the header, but we want it to be the button, so we set the position: relative in the button */
+  /* z-index: -1 because we want it behind the button, so we will implement the hover in the btn. */
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+
+  /* we will set the duration of .5seconds, it will ease-out and will have a delay of .75s related to the others animations */
+  /* so the button is visible and then it starts the animation, if we set the animation-fill-mode it will automatically applies the styles of the 0% before the animation starts. which in this case is opacity 0. */
+  /* coment the animations-fill-mode to see what happens. */
 }
 
 .btn-text {
-    &:link,
-    &:visited {
-        font-size: $default-font-size;
-        color: $color-primary;
-        display: inline-block;
-        text-decoration: non;
-        border-bottom: 1px solid $color-primary;
-        padding: 3px;
-        // it is fine to use pixels here, because they are really small units.
-        transition: all .2s;
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    // it is fine to use pixels here, because they are really small units.
+    transition: all 0.2s;
+  }
 
-    }
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
 
-    &:hover {
-        background-color: $color-primary;
-        color: $color-white;
-        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
-        transform: translateY(-2px);
-    }
-
-    &:active {
-        box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
-        transform: translateY(0);
-    }
+  &:active {
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
 }
