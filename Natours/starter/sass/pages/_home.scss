@@ -42,3 +42,32 @@
   //   background-color: $color-grey-light-2;
   position: relative;
 }
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+
+// para fazer o efeito branco transparente na foto, usou 2 gradientes como background image, 
+
+
+.book {
+  background-image: linear-gradient(105deg, 
+                                                          rgba($color-white, .9) 0%,
+                                                          rgba($color-white, .9) 50%,
+                                                           transparent 50%) , // aqui estava orangered para testar, depois mudou para transparent
+                                                           url(../img/nat-10.jpg);
+
+  background-size: cover; // o background-size é o tamanho do background, ou seja, o tamanho do background vai ser o tamanho do container. poderia ser 100% também. Com 100% poderiamos inspecionar a página e ver que ao reduzir o % a imagem começa a se repetir.
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
+
+  // gradiente para dar o efeito do background branco:
+  height: 50rem;
+
+  &__form {
+    width: 50%;
+    padding: 6rem;
+  }
+}
