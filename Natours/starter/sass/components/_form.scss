@@ -1,0 +1,55 @@
+.form {
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        font-size: 1.5rem;
+        font-family: inherit;
+        color: inherit;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: rgba($color-white, .5);
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 90%;
+        display: block;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border-bottom: 3px solid $color-primary;
+        }
+
+        &:focus:invalid {
+            border-bottom: 3px solid $color-secondary-dark;
+        }
+
+
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-2;
+        }
+    }
+     
+
+    &__label {
+        font-size: 1.2 rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        transition: all .3s;
+    }
+
+    // como o input e a label são irmãos, usamos o seletor +
+    // se houvessem divs, botões etc no meio dos dois deveria usar o seletor ~
+    // para a label ser selecionada com o + ela deve estar depois do input.
+    // se a label estivesse antes do input não teria como selecionar desta forma.
+    &__input:placeholder-shown + &__label {
+        // aqui usou opacity 0 e visibility hidden, precisa dos dois para que o elemento não apareça e também não esteja na tela, precisa do opacity para que possa animar, pois o visibility não pode ser animado.
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4rem);
+    } 
+
+}
