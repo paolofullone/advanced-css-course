@@ -1,4 +1,6 @@
 .btn {
+  // para a seção "start booking now" estava tentando aplicar o mesmo estilo ao botão, como aqui estava somente o &:link e o &:visited não tinha funcionado, precisou adicionar o &. Os dois primeiros funcionam para anchor element, mas não para button, se tirar o & daqui o botão desconfigura todo.
+  &,
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -10,6 +12,9 @@
     transition: all 0.2s;
     position: relative;
     font-size: $default-font-size;
+    // change for the button element (next step=>) at start booking now section
+    border: none;
+    cursor: pointer;
   }
   /* we used a :link because this button will be a link, and :link is a pseudo-class */
   /* in the browsers a visited link gets purple, we want them to be same as before visiting. */
@@ -39,7 +44,9 @@
   /* adjusted the scale to scaleX(1.4) and scaleY(1.6) */
   /* we created the @keyframes moveInBottom and inserted the &-animated as a class of the discoverourtours button. */
 
-  &:active {
+  &:active,
+  &:focus {
+    outline: none;
     transform: translateY(-1rem);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }

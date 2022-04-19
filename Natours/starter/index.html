@@ -328,7 +328,30 @@
                   <input type="email" id="email" class="form__input" placeholder="Email address" required>
                   <label for="email" class="form__label">Email address </label>
                 </div>
+
+                <div class="form__group u-margin-bottom-medium">
+                  <div class="form__radio-group">
+                    <!-- não tem jeito de estilizar o radio button no css, vamos ocultar ele depois e usar o span -->
+                    <input type="radio" class="form__radio-input" id="small" name="size">
+                    <label for="small" class="form__radio-label">
+                      <span class="form__radio-button"></span>
+                      Small Tour Group
+                    </label>
+                  </div>
+                  <div class="form__radio-group">
+                    <input type="radio" class="form__radio-input" id="large" name="size">
+                    <label for="large" class="form__radio-label">
+                      <span class="form__radio-button"></span>
+                      Large Tour Group
+                    </label>
+                    
+                  </div>
+                </div>
                 
+                <div class="form__group">
+                  <button class="btn btn--green">Next step &rarr;</button>
+                </div>
+
               </form>
             </div>
           </div>
@@ -336,6 +359,40 @@
       </section>
 
     </main>
+
+    <footer class="footer">
+      <div class="footer__logo-box">
+         <img src="./img/logo-green-2x.png" alt="Full logo" class="footer__logo">
+         <div class="row">
+           <div class="col-1-of-2">
+             <div class="footer__navigation">
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href="#" class="footer__link">Company</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Contact us</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Carrers</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Privacy policy</a>
+              </li>
+              <li class="footer__item">
+                <a href="#" class="footer__link">Terms</a>
+              </li>
+            </ul>
+             </div>
+           </div>
+           <div class="col-1-of-2">
+             <p class="footer__copyright">
+               Built by <a href="#" class="footer__link">Paolo Fullone</a>during a online course of Advanced CSS and SASS by <a href="#" class="footer__link">Jonas Schmedtmann.</a>
+             </p>
+           </div>
+         </div>
+      </div>
+    </footer>
 
     <!-- <section class="grid-test">
       <div class="row">

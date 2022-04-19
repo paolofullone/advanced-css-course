@@ -1,8 +1,10 @@
-.u-center-text { text-align: center; }
+.u-center-text { text-align: center !important; }
 
-.u-margin-bottom-small { margin-bottom: 1.5rem; }
-.u-margin-bottom-medium { margin-bottom: 4rem; }
-.u-margin-bottom-big { margin-bottom: 8rem; }
+.u-margin-bottom-small { margin-bottom: 1.5rem !important; }
+.u-margin-bottom-medium { margin-bottom: 4rem !important; }
+.u-margin-bottom-big { margin-bottom: 8rem !important; }
 
-.u-margin-top-top { margin-top: 8rem; }
-.u-margin-top-huge { margin-top: 10rem; }
+.u-margin-top-top { margin-top: 8rem !important; }
+.u-margin-top-huge { margin-top: 10rem !important; }
+
+// aqui passou o !important pois quando essas classes são aplicadas elas devem de fato sobrescrever as mais específicas, por exemplo no botão da seção "start booking now", dentro do form tem uma margem de 2rem, e estava sobrescrevendo a margem de 4 rem do medium.
