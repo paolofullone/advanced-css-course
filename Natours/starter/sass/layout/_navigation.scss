@@ -1,0 +1,82 @@
+.navigation {
+
+  &__checkbox {
+    display: none;
+  }
+  
+  &__button {
+    height: 7rem;
+    width: 7rem;
+    position: fixed;
+    background-color: $color-white;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 2000;
+  }
+
+  &__background {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    z-index: 1000;
+
+    transform: scale(80);
+  }
+
+  &__nav {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1500;
+
+  }
+
+
+&__list {
+  @include center-horizontally-vertically;
+  text-align: center;
+  list-style: none;
+}
+
+&__item {
+  margin: 1rem;
+}
+
+&__link {
+  &:link,
+  &:visited {
+    // ao final do vídeo percebeu que o padding não estava sendo aplicado corretamente nem o translateX do hover e active, aí lembrou de passar o inline-block aqui no link.
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 300;
+    padding: 1rem 2rem;
+    color: $color-white;
+    text-decoration: none;
+    text-transform: uppercase;
+    background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white 50%);
+    background-size: 260%;
+    transition: all .4s;
+
+    span {
+      margin-right: 1rem;
+      display: inline-block;
+    }
+  }
+
+  &:hover,
+  &:active {
+    background-position: 100%;
+    color: $color-primary;
+    transform: translateX(1rem);
+  }
+
+}
+
+}

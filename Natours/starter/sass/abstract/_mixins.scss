@@ -9,3 +9,10 @@
         // clear both will works if we use float left or right
     }
 }
+
+@mixin center-horizontally-vertically {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
