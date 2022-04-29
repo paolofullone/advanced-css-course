@@ -13,6 +13,7 @@
     right: 6rem;
     border-radius: 50%;
     z-index: 2000;
+    box-shadow: 0 1rem 3rem rgba($color-black, .1)
   }
 
   &__background {
@@ -24,18 +25,25 @@
     right: 6.5rem;
     background-image: radial-gradient($color-primary-light, $color-primary-dark);
     z-index: 1000;
+    // no cubic-bezier.com dá pra escolher o efeito e customizar
+    // easings.net para escolher o efeito de transição
+    transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
 
-    transform: scale(80);
+    // transform: scale(80); // estava aqui só para vermos enquanto escrevemos o código...
   }
 
   &__nav {
     height: 100vh;
-    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1500;
 
+    // para esconder o menu, usamos opacity 0, mas como são links, também precisamos passar o width 0. Vamos mudar essas propriedades com o "hack" do checkbox.
+    opacity: 0;
+    width: 0;
+    transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
   }
 
 
@@ -43,6 +51,7 @@
   @include center-horizontally-vertically;
   text-align: center;
   list-style: none;
+  width: 100%;
 }
 
 &__item {
@@ -76,7 +85,15 @@
     color: $color-primary;
     transform: translateX(1rem);
   }
+}
 
+&__checkbox:checked ~  &__background {
+  transform: scale(80);
+}; 
+
+&__checkbox:checked ~ nav {
+  opacity: 1;
+  width: 100%;
 }
 
 }
