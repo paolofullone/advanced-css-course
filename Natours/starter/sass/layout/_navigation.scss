@@ -13,7 +13,10 @@
     right: 6rem;
     border-radius: 50%;
     z-index: 2000;
-    box-shadow: 0 1rem 3rem rgba($color-black, .1)
+    box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        // para centralizar os 3 --- do menu
+    text-align: center;
+    cursor: pointer;
   }
 
   &__background {
@@ -43,7 +46,6 @@
     opacity: 0;
     width: 0;
     transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    
   }
 
 
@@ -87,6 +89,7 @@
   }
 }
 
+// FUNCTIONALITY
 &__checkbox:checked ~  &__background {
   transform: scale(80);
 }; 
@@ -95,5 +98,67 @@
   opacity: 1;
   width: 100%;
 }
+
+// ICON é um elemento span no html com nbsp que é vazio. E aqui vamos preencher com uma linha de 2pixels de altura e 3 rem de comprimento, para não repetir3x o mesmo elemento, usou as pseudo classes & (o proprio elemento) adicionando before e after.
+&__icon {
+  position: relative;
+  margin-top: 3.5rem;
+  &,
+  &::before,
+  &::after {
+    width: 3rem;
+    height: 2px;
+    background-color: $color-grey-dark-3;
+    display: inline-block;
+  }
+
+  // para que as pseudo-classes before e after apareçam na tela, elas precisam ter o content definido, mesmo que seja uma string vazia.
+  &::before,
+  &::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all .4s;
+  }
+
+  // se colocar um transform-origin: right no &::before abaixo e comentar o top:0 nos checkboxes mais abaixo, percebemos que o elemento passa a rotacionar tomando o seu lado direito como referência. Pode ser um recurso útil também. Se não for espeficicado ele vai torationar a partir do centro.
+
+  //   &::before {
+  //   top: -.8rem;
+  //   transform-origin: right;
+  // }
+
+  &::before {
+    top: -.8rem;
+  }
+
+  &::after {
+    bottom: -.8rem;
+  }
+}
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+    &__button:hover &__icon::after {
+    bottom: -1rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+
+// esta parte forma o X do menu, com 45 e -45 funciona também, mas se usar 135 e -135 dá um efeito mais legal de rotação antes de formar o X
+&__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+&__checkbox:checked + &__button &__icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
 
 }
