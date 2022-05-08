@@ -7,6 +7,11 @@
   background-color: rgba($color-black, 0.8);
   z-index: 9999;
 
+  // para animar o popup precisamos usar o opacity e visibility ao invés do display none.
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
   &__content {
     @include center-horizontally-vertically;
     width: 75%;
@@ -16,17 +21,24 @@
     border-radius: 3px;
     display: table;
     overflow: hidden;
+    opacity: 0;
+    // se deixarmos somente este transform abaixo, ele vai ser redimensionado para 50% mas vai perder a posição na tela, se ispecionarmos este elemento veremos que ele tem outro transform acima (do mixin @include) que vai ser sobrescrito por este transform: scale (0.5). Portanto preciamos repetir o do mixin aqui também.
+    // transform: scale(.5);
+    // ao repetir fica assim:
+    transform: translate(-50%, -50%) scale(.25);
+    // o .2s é um delay da transição, primeiro vai aparecer o background mais escurecido e depois o popup começa a surgir.
+    transition: all .5s .2s;
   }
 
-//   uma forma de colocar as duas imagens do lado seria passando float: left no left e no right, mas o texto fica mais dificil de centralizar de forma vertical dessa forma. Por isso simulamos uma tabela com o table-cell abaixo e o table no parent element.
+  //   uma forma de colocar as duas imagens do lado seria passando float: left no left e no right, mas o texto fica mais dificil de centralizar de forma vertical dessa forma. Por isso simulamos uma tabela com o table-cell abaixo e o table no parent element.
   &__left {
-      width: 33.333333%;
+    width: 33.333333%;
     //   float: left;
     display: table-cell;
   }
 
   &__right {
-      width: 66.666667%;
+    width: 66.666667%;
     //   float: left;
     display: table-cell;
     vertical-align: middle;
@@ -37,24 +49,59 @@
     width: 100%;
     display: block;
   }
-  &__text{
-      font-size: 1.4rem;
-      margin-bottom: 4rem;
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
 
-        // prefix para funcionar em browsers antigos, mais a frente vai mostrar uma ferramenta que faz isso automático.
-      -moz-column-count: 2;
-      -moz-column-gap: 4rem;
-      -moz-column-rule: 1px solid $color-grey-light-2;
+    // prefix para funcionar em browsers antigos, mais a frente vai mostrar uma ferramenta que faz isso automático.
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid $color-grey-light-2;
 
-      column-count: 2;
-      column-gap: 4rem; //o default é 1em para o column-gap, aqui seria 14 pixels pois a fonte foi setada em 1.4rem
-      // adiciona uma borda entre as colunas
-      column-rule: 1px solid $color-grey-light-2;
-      // adiciona um hifen no texto automaticamente, para funcionar de acordo com o idioma ele deve estar definido de forma correta no html, como o lorem ipsum não é inglês fica meio esquisito. Para funcionar em browsers mais antigos precisa dos prefixos.
-      
-      -moz-hyphens: auto;
-      -ms-hyphens: auto;
-      -webkit-hyphens: auto;
-      hyphens: auto;
+    column-count: 2;
+    column-gap: 4rem; //o default é 1em para o column-gap, aqui seria 14 pixels pois a fonte foi setada em 1.4rem
+    // adiciona uma borda entre as colunas
+    column-rule: 1px solid $color-grey-light-2;
+    // adiciona um hifen no texto automaticamente, para funcionar de acordo com o idioma ele deve estar definido de forma correta no html, como o lorem ipsum não é inglês fica meio esquisito. Para funcionar em browsers mais antigos precisa dos prefixos.
+
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+
+
+  // quando clica em qualquer botão no backface dos cards, o #popup é adicionado ao endereço da página pois ele está no a href='#popup' dos 3 botões (no anchor deles). Isso faz com que o elemento popup seja o target, e abaixo colocamos a opacidade 1 e visibilidade visible.
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // para estilizar o "surgimento" do banner, precisamos selectionar o __content quando o popup é aberto, ou seja, quando ele é o target. no &__content acima (sem o target) setamos a escala para .25 e o opacity para 0.
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+
+  }
+
+  // agora para fechar o popup adicionamos no html um anchor que tem a classe popup__close.
+  &__close {
+    &:link,
+    &:visited {
+      color: $color-grey-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.5s;
+      // com este line-height o X fica ligeiramente acima do "start booking now".
+      line-height: 1;
+    }
+    &:hover {
+      color: $color-primary;
+    }
   }
 }
