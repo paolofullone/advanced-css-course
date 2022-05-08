@@ -1,0 +1,60 @@
+.popup {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-black, 0.8);
+  z-index: 9999;
+
+  &__content {
+    @include center-horizontally-vertically;
+    width: 75%;
+    // height: 50rem; // 50rem only for testing purposes
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 3px;
+    display: table;
+    overflow: hidden;
+  }
+
+//   uma forma de colocar as duas imagens do lado seria passando float: left no left e no right, mas o texto fica mais dificil de centralizar de forma vertical dessa forma. Por isso simulamos uma tabela com o table-cell abaixo e o table no parent element.
+  &__left {
+      width: 33.333333%;
+    //   float: left;
+    display: table-cell;
+  }
+
+  &__right {
+      width: 66.666667%;
+    //   float: left;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+
+  &__img {
+    width: 100%;
+    display: block;
+  }
+  &__text{
+      font-size: 1.4rem;
+      margin-bottom: 4rem;
+
+        // prefix para funcionar em browsers antigos, mais a frente vai mostrar uma ferramenta que faz isso automático.
+      -moz-column-count: 2;
+      -moz-column-gap: 4rem;
+      -moz-column-rule: 1px solid $color-grey-light-2;
+
+      column-count: 2;
+      column-gap: 4rem; //o default é 1em para o column-gap, aqui seria 14 pixels pois a fonte foi setada em 1.4rem
+      // adiciona uma borda entre as colunas
+      column-rule: 1px solid $color-grey-light-2;
+      // adiciona um hifen no texto automaticamente, para funcionar de acordo com o idioma ele deve estar definido de forma correta no html, como o lorem ipsum não é inglês fica meio esquisito. Para funcionar em browsers mais antigos precisa dos prefixos.
+      
+      -moz-hyphens: auto;
+      -ms-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+  }
+}
