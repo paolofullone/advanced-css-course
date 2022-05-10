@@ -1,3 +1,16 @@
+/*
+0-600px: mobile
+600-900px: tablet portrait
+960-1200px: tablet landscape
+[1200-1800px]: desktop (normal styles apply)
+1800px+ big desktop
+
+breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
 *,
 *::after,
 *::before {
@@ -9,6 +22,24 @@
 
 html {
   font-size: 62.5%;
+}
+
+@media (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (min-width: 112.5em) {
+  html {
+    font-size: 75%;
+  }
 }
 
 body {
@@ -963,7 +994,7 @@ body {
 }
 
 .row::after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }

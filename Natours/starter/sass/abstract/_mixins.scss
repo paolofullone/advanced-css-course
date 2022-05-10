@@ -1,19 +1,62 @@
 @mixin clearfix {
-    &::after{
-        // we used &::after here so the mixin will copy everything in the css code row before it, so after compile it will become .row::after
-        content:"";
-        // we need to specify it's content or the pseudo element will not appear on the page, since we don't want to actually see anything on the page we set it to empty.
-        display: table;
-        // display table is the standard value of the clearfix.
-        clear: both;
-        // clear both will works if we use float left or right
-    }
+  &::after {
+    // we used &::after here so the mixin will copy everything in the css code row before it, so after compile it will become .row::after
+    content: '';
+    // we need to specify it's content or the pseudo element will not appear on the page, since we don't want to actually see anything on the page we set it to empty.
+    display: table;
+    // display table is the standard value of the clearfix.
+    clear: both;
+    // clear both will works if we use float left or right
+  }
 }
 
 @mixin center-horizontally-vertically {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
+// MEDIA QUERY MANAGER
+/*
+0-600px: mobile
+600-900px: tablet portrait
+960-1200px: tablet landscape
+[1200-1800px]: desktop (normal styles apply)
+1800px+ big desktop
+
+breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+
+// inserimos uma função para cuidar das media querys, a última só ocorrerá quando a tela estiver com no mínimo 1800 pixels de largura. diferente das demais que usa o max-width, e no intervalo entre 1200 e 1800 é o estilo normal que já é aplicado.
+// aqui nas media querys não importa o body com font size de 62.5%, pois nas media querys não funciona, então a melhor unidade para se usar aqui são os "ems" lembrando que 1 em são 16 px;
+@mixin respond($breakpoint) {
+  @if $breakpoint == 'phone' {
+    @media (max-width: 37.5em) {
+      // 600px
+      @content;
+    }
+  }
+  @if $breakpoint == 'tab-port' {
+    @media (max-width: 56.25em) {
+      // 900px
+      @content;
+    }
+  }
+  @if $breakpoint == 'tab-land' {
+    // 1200 px
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == 'big-desktop' {
+    // 1800px
+    @media (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
